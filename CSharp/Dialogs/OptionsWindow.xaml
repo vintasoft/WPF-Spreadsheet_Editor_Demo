@@ -1,0 +1,197 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cc="clr-namespace:WpfDemosCommonCode.CustomControls"
+        xmlns:scc="clr-namespace:WpfSpreadsheetEditorDemo.CustomControls"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="WpfSpreadsheetEditorDemo.OptionsWindow"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        Title="Options" Height="410" Width="450">
+    <Window.Resources>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Height" Value="21" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Culture (number formats, date formats)"/>
+            <ComboBox x:Name="cultureComboBox" Grid.Row="0" Grid.Column="1" IsEditable="True">
+                <ComboBoxItem Content="en-US"/>
+                <ComboBoxItem Content="ru-RU"/>
+                <ComboBoxItem Content="de-DE"/>
+                <ComboBoxItem Content="es-ES"/>
+                <ComboBoxItem Content="fr-FR"/>
+                <ComboBoxItem Content="it-IT"/>
+                <ComboBoxItem Content="pt-PT"/>
+            </ComboBox>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="UI Culture (function names, error names and constants)"/>
+            <ComboBox x:Name="uiCultureComboBox" Grid.Row="1" Grid.Column="1" IsEditable="True">
+                <ComboBoxItem Content="en-US"/>
+                <ComboBoxItem Content="ru-RU"/>
+                <ComboBoxItem Content="de-DE"/>
+                <ComboBoxItem Content="es-ES"/>
+                <ComboBoxItem Content="fr-FR"/>
+                <ComboBoxItem Content="it-IT"/>
+                <ComboBoxItem Content="pt-PT"/>
+            </ComboBox>
+
+            <Label Grid.Row="2" Grid.Column="0" Content="Formulas calculation minimum interval (requires reopen)"/>
+            <cc:NumericUpDown x:Name="calculationMinIntervalNumericUpDown" Grid.Row="2" Grid.Column="1" Maximum="10000" />
+            <Label Grid.Row="2" Grid.Column="3" Margin="1,0,0,0" Content="ms"/>
+        </Grid>
+
+        <GroupBox Grid.Row="1" Header="Appearance:">
+            <TabControl>
+                <TabControl.Resources>
+                    <Style x:Key="rowDefinitionStyle" TargetType="{x:Type RowDefinition}">
+                        <Setter Property="Height" Value="28"/>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Header="Focused Cells">
+                    <scc:CellReferencesAppearanceEditorControl x:Name="focusedCellsAppearanceEditor" />
+                </TabItem>
+                <TabItem Header="Clipboard Cells">
+                    <scc:CellReferencesAppearanceEditorControl x:Name="bufferCellsAppearanceEditor" />
+                </TabItem>
+                <TabItem Header="Formula Cells">
+                    <scc:CellReferencesAppearanceEditorControl x:Name="formulaCellsAppearanceEditor" />
+                </TabItem>
+                <TabItem Header="Focused Formula Cells">
+                    <scc:CellReferencesAppearanceEditorControl x:Name="focusedFormulaCellsAppearanceEditor" />
+                </TabItem>
+                <TabItem Header="Headings and Selection">
+                    <Grid Margin="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Style="{StaticResource rowDefinitionStyle}"/>
+                            <RowDefinition Style="{StaticResource rowDefinitionStyle}"/>
+                            <RowDefinition Style="{StaticResource rowDefinitionStyle}"/>
+                            <RowDefinition Style="{StaticResource rowDefinitionStyle}"/>
+                            <RowDefinition Style="{StaticResource rowDefinitionStyle}"/>
+                            <RowDefinition Style="{StaticResource rowDefinitionStyle}"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Column="0" Grid.Row="0" Content="Headings Color:"/>
+                        <cc:ColorPanelControl x:Name="headingsColorPanelControl" Grid.Column="1" Grid.Row="0"/>
+
+                        <Label Grid.Column="0" Grid.Row="1" Content="Headings Text Color:"/>
+                        <cc:ColorPanelControl x:Name="headingsTextColorPanelControl" Grid.Column="1" Grid.Row="1"/>
+
+                        <Label Grid.Column="0" Grid.Row="2" Content="Headings Border Color:"/>
+                        <cc:ColorPanelControl x:Name="headingsBorderColorPanelControl" Grid.Column="1" Grid.Row="2"/>
+
+                        <Label Grid.Column="0" Grid.Row="3" Content="Selected Cell Color:"/>
+                        <cc:ColorPanelControl x:Name="selectedCellColorPanelControl" Grid.Column="1" Grid.Row="3"/>
+
+                        <Label Grid.Column="0" Grid.Row="4" Content="Selected Header Color:"/>
+                        <cc:ColorPanelControl x:Name="selectedHeaderColorPanelControl" Grid.Column="1" Grid.Row="4"/>
+
+                        <Label Grid.Column="0" Grid.Row="5" Content="Covered Header Color:"/>
+                        <cc:ColorPanelControl x:Name="coveredHeaderColorPanelControl" Grid.Column="1" Grid.Row="5"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Errors">
+                    <Grid Margin="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Style="{StaticResource rowDefinitionStyle}"/>
+                            <RowDefinition Style="{StaticResource rowDefinitionStyle}"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Column="0" Grid.Row="0" Content="Indicator Color:"/>
+                        <cc:ColorPanelControl x:Name="errorIndicatorColorPanelControl" Grid.Column="1" Grid.Row="0"/>
+
+                        <Label Grid.Column="0" Grid.Row="1" Content="Indicator Size:"/>
+                        <cc:NumericUpDown x:Name="errorIndicatorSizeNumericUpDown" Margin="-1" Grid.Column="1" Grid.Row="1" Width="64" HorizontalAlignment="Left"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Comments">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Margin="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="140"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Style="{StaticResource rowDefinitionStyle}"/>
+                                <RowDefinition Style="{StaticResource rowDefinitionStyle}"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Content="Indicator Color:"/>
+                            <cc:ColorPanelControl x:Name="commentIndicatorColorPanelControl" Grid.Column="1" Grid.Row="0"/>
+
+                            <Label Grid.Column="0" Grid.Row="1" Content="Indicator Size:"/>
+                            <cc:NumericUpDown x:Name="commentIndicatorSizeNumericUpDown" Margin="-1" Grid.Column="1" Grid.Row="1" Width="64" HorizontalAlignment="Left"/>
+                        </Grid>
+                        <Grid Grid.Row="1" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <GroupBox Grid.Column="0" Header="Appearance:">
+                                <scc:CellReferencesAppearanceEditorControl x:Name="commentAppearanceEditor" />
+                            </GroupBox>
+                            <GroupBox Grid.Column="1" Header="Focused appearance:">
+                                <scc:CellReferencesAppearanceEditorControl x:Name="focusedCommentAppearanceEditor" />
+                            </GroupBox>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Miscellaneous">
+                    <Grid Margin="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="28"/>
+                            <RowDefinition Height="28"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Column="0" Grid.Row="0" Content="Hyperlink Color:"/>
+                        <cc:ColorPanelControl x:Name="hyperlinkColorPanelControl" Grid.Column="1" Grid.Row="0" CanEditAlphaChannel="False"/>
+
+                        <Label Grid.Column="0" Grid.Row="1" Content="Grid Color Alpha:"/>
+                        <cc:NumericUpDown x:Name="gridColorAlphaNumericUpDown" Margin="-1" Minimum="0" Maximum="255" Grid.Column="1" Grid.Row="1" Width="64" HorizontalAlignment="Left"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </GroupBox>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,3,5,5">
+            <Button Width="75" Height="23" Margin="0,0,5,0" IsDefault="True" Click="buttonOk_Click" Content="OK"/>
+            <Button Width="75" Height="23" IsCancel="True" Content="Cancel"/>
+        </StackPanel>
+    </Grid>
+</Window>

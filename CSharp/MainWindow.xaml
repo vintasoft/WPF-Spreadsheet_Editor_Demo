@@ -1,0 +1,147 @@
+﻿<Window x:Class="WpfSpreadsheetEditorDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfSpreadsheetEditorDemo"  
+        xmlns:vsofficeui="clr-namespace:Vintasoft.Imaging.Office.Spreadsheet.Wpf.UI;assembly=Vintasoft.Imaging.Office.OpenXml.Wpf.UI"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="VintaSoft Spreadsheet Editor Demo" 
+        Width="1000" Height="700"
+        MinWidth="550" MinHeight="300"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <Style x:Key="mainWindowVerticalSeparator" TargetType="{x:Type Separator}" BasedOn="{StaticResource verticalSeparatorStyle}">
+            <Setter Property="Width" Value="60"/>
+        </Style>
+
+        <ContextMenu x:Key="drawingContextMenu">
+            <MenuItem Header="Set Image..." Name="setImageMenuItem" Click="drawingSetImageMenuItem_Click"/>
+            <Separator/>
+            <MenuItem Header="Set Link" Name="drawingLinkMenuItem" Click="drawingLinkMenuItem_Click"/>
+            <MenuItem Header="Remove Link..." Name="drawingRemoveLinkMenuItem" Click="drawingRemoveLinkMenuItem_Click"/>
+            <Separator/>
+            <MenuItem Header="Delete" Name="deleteDrawingMenuItem" Click="deleteDrawingMenuItem_Click"/>
+            <MenuItem Header="Properties..." Name="drawingPropertiesMenuItem" Click="drawingPropertiesMenuItem_Click"/>
+        </ContextMenu>
+
+        <ContextMenu x:Key="commentContextMenu">
+            <MenuItem Header="Edit Comment..." Name="editCommentMenuItem" Click="editCommentMenuItem_Click"/>
+            <MenuItem Header="Delete Comment" Name="deleteCommentMenuItem" Click="deleteCommentMenuItem_Click"/>
+            <MenuItem Header="Hide Comment" Name="hideCommentMenuItem" Click="hideCommentMenuItem_Click"/>
+        </ContextMenu>
+    </Window.Resources>
+    <Grid Margin="3,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="94" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="2" BorderBrush ="Black" BorderThickness="1">
+            <vsofficeui:WpfSpreadsheetEditorControl x:Name="spreadsheetEditorControl1" CellCursor="Cross" HyperlinkCursor="Hand" ResizeColumnCursor="SizeWE" ResizeRowCursor="SizeNS" SelectAllCursor="ScrollSE" SelectColumnCursor="ScrollS" SelectRowCursor="ScrollE" PreviewMouseDoubleClick="spreadsheetEditorControl1_PreviewMouseDoubleClick">
+                <vsofficeui:WpfSpreadsheetEditorControl.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Copy" Name="copyMenuItem" Click="copyMenuItem_Click"/>
+                        <MenuItem Header="Cut" Name="cutMenuItem" Click="cutMenuItem_Click"/>
+                        <MenuItem Header="Paste" Name="pasteMenuItem" Click="pasteMenuItem_Click"/>
+                        <Separator x:Name="copyPasteSectionSeparator"/>
+                        <MenuItem Header="Insert Columns" Name="insertColumnsMenuItem" Click="insertColumnsMenuItem_Click"/>
+                        <MenuItem Header="Insert Rows" Name="insertRowsMenuItem" Click="insertRowsMenuItem_Click"/>
+                        <MenuItem Header="Delete Columns" Name="deleteColumnsMenuItem" Click="deleteColumnsMenuItem_Click"/>
+                        <MenuItem Header="Delete Rows" Name="deleteRowsMenuItem" Click="deleteRowsMenuItem_Click"/>
+                        <MenuItem Header="Insert" Name="insertCellsMenuItem">
+                            <MenuItem Header="Cells and shift right" Name="shiftCellsRightMenuItem" Click="shiftCellsRightMenuItem_Click"/>
+                            <MenuItem Header="Cells and shift down" Name="shiftCellsDownMenuItem" Click="shiftCellsDownMenuItem_Click"/>
+                            <MenuItem Header="Entire row" Name="insertEntireRowMenuItem" Click="insertEntireRowMenuItem_Click"/>
+                            <MenuItem Header="Entire column" Name="insertEntireColumnMenuItem" Click="insertEntireColumnMenuItem_Click"/>
+                        </MenuItem>
+                        <MenuItem Header="Delete" Name="deleteCellsMenuItem">
+                            <MenuItem Header="Cells and shift left" Name="shiftCellsLeftMenuItem" Click="shiftCellsLeftMenuItem_Click"/>
+                            <MenuItem Header="Cells and shift up" Name="shiftCellsUpMenuItem" Click="shiftCellsUpMenuItem_Click"/>
+                            <MenuItem Header="Entire row" Name="deleteRowMenuItem" Click="deleteEntireRowMenuItem_Click"/>
+                            <MenuItem Header="Entire column" Name="deleteColumnMenuItem" Click="deleteEntireColumnMenuItem_Click"/>
+                        </MenuItem>
+                        <MenuItem Header="Clear Contents" Name="clearContentsMenuItem" Click="clearContentsMenuItem_Click"/>
+                        <Separator x:Name="cellsEditSectionSeparator"/>
+                        <MenuItem Header="Insert Comment..." Name="insertCommentMenuItem" Click="insertCommentMenuItem_Click"/>
+                        <MenuItem Header="Edit Comment..." Name="editCellCommentMenuItem" Click="editCellCommentMenuItem_Click"/>
+                        <MenuItem Header="Delete Comment" Name="deleteCellCommentMenuItem" Click="deleteCellCommentMenuItem_Click"/>
+                        <MenuItem Header="Show/Hide Comment" Name="showHideCommentMenuItem" Click="showHideCommentMenuItem_Click"/>
+                        <Separator x:Name="commentSectionSeparator"/>
+                        <MenuItem Header="Format Cells..." Name="formatCellsMenuItem" Click="formatCellsMenuItem_Click"/>
+                        <MenuItem Header="Define Name..." Name="defineNameMenuItem" Click="defineNameMenuItem_Click"/>
+                        <MenuItem Header="Link..." Name="linkMenuItem" Click="linkMenuItem_Click"/>
+                        <MenuItem Header="Remove Link" Name="removeLinkMenuItem" Click="removeLinkMenuItem_Click"/>
+                        <MenuItem Header="Column Width..." Name="columnWidthMenuItem" Click="columnWidthMenuItem_Click"/>
+                        <MenuItem Header="Row Height..." Name="rowHeightMenuItem" Click="rowHeightMenuItem_Click"/>
+                        <MenuItem Header="Hide Columns" Name="hideColumnsMenuItem" Click="hideColumnsMenuItem_Click"/>
+                        <MenuItem Header="Unhide Columns" Name="unhideColumnsMenuItem" Click="unhideColumnsMenuItem_Click"/>
+                        <MenuItem Header="Hide Rows" Name="hideRowsMenuItem" Click="hideRowsMenuItem_Click"/>
+                        <MenuItem Header="Unhide Rows" Name="unhideRowsMenuItem" Click="unhideRowsMenuItem_Click"/>
+                    </ContextMenu>
+                </vsofficeui:WpfSpreadsheetEditorControl.ContextMenu>
+            </vsofficeui:WpfSpreadsheetEditorControl>
+        </Border>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
+
+            <TabControl Grid.Column="0">
+                <TabControl.Resources>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="MinWidth" Value="60"/>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Name="fileTabPage" Header="File">
+                    <local:FilePanel x:Name="filePanel1" SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}" FilenameChanged="filePanel1_FilenameChanged"/>
+                </TabItem>
+                <TabItem Name="homeTabPage" Header="Home">
+                    <StackPanel Orientation="Horizontal">
+                        <local:CopyPastePanel x:Name="copyPastePanel1" SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}" />
+                        <Separator Style="{StaticResource mainWindowVerticalSeparator}"/>
+                        <local:FontPropertiesPanel x:Name="fontPropertiesPanel1" SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}" />
+                        <Separator Style="{StaticResource mainWindowVerticalSeparator}"/>
+                        <local:TextAlignmentPanel x:Name="textAlignmentPanel1" SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}" />
+                        <Separator Style="{StaticResource mainWindowVerticalSeparator}"/>
+                        <local:NumberFormatPanel x:Name="numberFormatPanel1" SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}" />
+                    </StackPanel>
+                </TabItem>
+                <TabItem Name="editTabPage" Header="Edit">
+                    <StackPanel Orientation="Horizontal">
+                        <local:CopyPastePanel x:Name="copyPastePanel2" SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}" />
+                        <Separator Style="{StaticResource mainWindowVerticalSeparator}"/>
+                        <local:CellsEditorPanel x:Name="cellsEditorPanel1" SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}" />
+                        <Separator Style="{StaticResource mainWindowVerticalSeparator}"/>
+                        <local:FindReplacePanel x:Name="findReplacePanel1" SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}" />
+                    </StackPanel>
+                </TabItem>
+                <TabItem Name="formulasTabPage" Header="Formulas">
+                    <StackPanel Orientation="Horizontal">
+                        <local:FunctionsPanel SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}" />
+                        <Separator Style="{StaticResource mainWindowVerticalSeparator}"/>
+                        <local:DefinedNamesPanel SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}"/>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Name="commentsTabPage" Header="Comments">
+                    <StackPanel Orientation="Horizontal">
+                        <local:CommentsPanel x:Name="commentsPanel" SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}" />
+                    </StackPanel>
+                </TabItem>
+                <TabItem Name="helpTabPage" Header="Help">
+                    <local:HelpPanel x:Name="helpPanel1" HorizontalAlignment="Left"/>
+                </TabItem>
+            </TabControl>
+            <local:UndoPanel Padding="3,0,0,0" Grid.Column="1" x:Name="undoPanel2" Height="72" VerticalAlignment="Bottom" SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}" />
+        </Grid>
+        <local:FormulaPanel x:Name="formulaPanel1" Grid.Row="1" Margin="0,3" SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}"/>
+        <local:NavigationPanel x:Name="navigationPanel1" Grid.Row="3" Margin="0,3" SpreadsheetEditor="{Binding ElementName=spreadsheetEditorControl1}"/>
+        <Label Name="statusLabel" Grid.Row="4" Height="26" HorizontalAlignment="Left"/>
+    </Grid>
+</Window>

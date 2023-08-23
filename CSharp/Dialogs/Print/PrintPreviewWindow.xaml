@@ -1,0 +1,55 @@
+﻿<Window x:Class="WpfSpreadsheetEditorDemo.PrintPreviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:ui="clr-namespace:Vintasoft.Imaging.Wpf.UI;assembly=Vintasoft.Imaging.Wpf.UI" 
+        xmlns:cc="clr-namespace:WpfDemosCommonCode.CustomControls"
+        mc:Ignorable="d"
+        Title="Print XLSX document" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="0" Margin="3">
+            <Button Name="printButton" Width="185" Height="65" Margin="0,3" Click="printButton_Click">Print</Button>
+            <Button Name="pageSettingsButton" Width="185" Height="23" Margin="0,3" Click="pageSettingsButton_Click">Page settings...</Button>
+        </StackPanel>
+        <GroupBox Header="Preview" Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <ui:WpfThumbnailViewer x:Name="printPreviewControl1" MultiSelect="False" />
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="40*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <Label>Page:</Label>
+                        <cc:NumericUpDown x:Name="previewPageIndexNumericUpDown" Width="100" ValueChanged="previewPageIndexNumericUpDown_ValueChanged"/>
+                        <Label Name="previewPageCountLabel">from 1 pages</Label>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="3">
+                        <Label>Zoom:</Label>
+                        <ComboBox Name="previewZoomComboBox" Width="115" Height="23" SelectionChanged="previewZoomComboBox_SelectionChanged">                            
+                            <ComboBoxItem>25%</ComboBoxItem>
+                            <ComboBoxItem>50%</ComboBoxItem>
+                            <ComboBoxItem>75%</ComboBoxItem>
+                            <ComboBoxItem>100%</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="WpfSpreadsheetEditorDemo.HelpPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vsue="clr-namespace:Vintasoft.Imaging.Wpf.UI.UIElements;assembly=Vintasoft.Imaging.Wpf.UI"
+             mc:Ignorable="d" 
+             Width="Auto" Height="Auto">
+    <vsue:PanelButtonWithText Text="About" ToolTip="About Spreadsheet Editor Demo" Click="aboutButton_Click">
+        <vsue:PanelButtonWithText.ImageSource>
+            <BitmapImage UriSource="../Resources/Help.png"/>
+        </vsue:PanelButtonWithText.ImageSource>
+    </vsue:PanelButtonWithText>
+</UserControl>

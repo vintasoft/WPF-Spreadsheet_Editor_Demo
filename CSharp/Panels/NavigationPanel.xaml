@@ -1,0 +1,110 @@
+﻿<local:SpreadsheetVisualEditorPanel x:Class="WpfSpreadsheetEditorDemo.NavigationPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfSpreadsheetEditorDemo"
+             xmlns:vsue="clr-namespace:Vintasoft.Imaging.Wpf.UI.UIElements;assembly=Vintasoft.Imaging.Wpf.UI"
+             mc:Ignorable="d" 
+                Height="Auto" Width="Auto">
+    <local:SpreadsheetVisualEditorPanel.Resources>
+        <BitmapImage x:Key="FirstWorksheetButtonIcon" UriSource="../Resources/NavigateFirst.png" />
+        <BitmapImage x:Key="PrevWorksheetButtonIcon" UriSource="../Resources/NavigatePrev.png" />
+        <BitmapImage x:Key="NextWorksheetButtonIcon" UriSource="../Resources/NavigateNext.png" />
+        <BitmapImage x:Key="LastWorksheetButtonIcon" UriSource="../Resources/NavigateLast.png" />
+        <BitmapImage x:Key="AddWorksheetButtonIcon" UriSource="../Resources/Worksheet_Add.png" />
+        <BitmapImage x:Key="WorksheetButtonIcon" UriSource="../Resources/Worksheet.png" />
+        <BitmapImage x:Key="CopyMenuItemIcon" UriSource="../Resources/Worksheet_Copy.png" />
+        <BitmapImage x:Key="RemoveMenuItemIcon" UriSource="../Resources/Worksheet_Delete.png" />
+        <BitmapImage x:Key="MoveMenuItemIcon" UriSource="../Resources/Worksheet_Move.png" />
+        <BitmapImage x:Key="RenameMenuItemIcon" UriSource="../Resources/Worksheet_Rename.png" />
+        <BitmapImage x:Key="ViewMenuItemIcon" UriSource="../Resources/Worksheet_ViewOptions.png" />
+        <BitmapImage x:Key="FormatMenuItemIcon" UriSource="../Resources/Worksheet_FormatProperties.png" />
+        <BitmapImage x:Key="ZoomOutButtonIcon" UriSource="../Resources/ZoomOut.png" />
+        <BitmapImage x:Key="ZoomInButtonIcon" UriSource="../Resources/ZoomIn.png" />
+        <BitmapImage x:Key="PanModeButtonIcon" UriSource="../Resources/PanMode.png" />
+    </local:SpreadsheetVisualEditorPanel.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Horizontal">
+            <vsue:PanelButton x:Name="firstWorksheetButton" Click="firstWorksheetButton_Click" ToolTip="First Worksheet" ImageSource="{StaticResource FirstWorksheetButtonIcon}"/>
+            <vsue:PanelButton x:Name="prevWorksheetButton" Click="prevWorksheetButton_Click" ToolTip="Previous Worksheet" ImageSource="{StaticResource PrevWorksheetButtonIcon}"/>
+            <ComboBox Name="worksheetComboBox" Width="180" Height="26" SelectionChanged="worksheetComboBox_SelectionChanged" VerticalContentAlignment="Center"/>
+            <vsue:PanelButton x:Name="nextWorksheetButton" Click="nextWorksheetButton_Click" ToolTip="Next Worksheet" ImageSource="{StaticResource NextWorksheetButtonIcon}"/>
+            <vsue:PanelButton x:Name="lastWorksheetButton" Click="lastWorksheetButton_Click" ToolTip="Last Worksheet" ImageSource="{StaticResource LastWorksheetButtonIcon}"/>
+            <vsue:PanelButton x:Name="addWorksheetButton" Click="addWorksheetButton_Click" ToolTip="Add Woksheet" ImageSource="{StaticResource AddWorksheetButtonIcon}"/>
+            <Menu Padding="0,2,0,0" Background="Transparent">
+                <MenuItem Name="worksheetsActionsButton" Padding="0">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource menuItemIcon}" Source="{StaticResource WorksheetButtonIcon}"/>
+                    </MenuItem.Icon>
+                    <MenuItem.Header>
+                        <Path Fill="Black" Data="M 0 0 L 4 4 L 8 0 Z" VerticalAlignment="Center"/>
+                    </MenuItem.Header>
+                    <MenuItem Name="copyMenuItem" Header="Copy" Click="copyMenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Style="{StaticResource menuItemIcon}" Source="{StaticResource CopyMenuItemIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="removeMenuItem" Header="Remove" Click="removeMenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Style="{StaticResource menuItemIcon}" Source="{StaticResource RemoveMenuItemIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="moveMenuItem" Header="Move..." Click="moveMenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Style="{StaticResource menuItemIcon}" Source="{StaticResource MoveMenuItemIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="renameMenuItem" Header="Rename..." Click="renameMenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Style="{StaticResource menuItemIcon}" Source="{StaticResource RenameMenuItemIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Name="viewMenuItem" Header="View">
+                        <MenuItem.Icon>
+                            <Image Style="{StaticResource menuItemIcon}" Source="{StaticResource ViewMenuItemIcon}" />
+                        </MenuItem.Icon>
+                        <MenuItem Name="showHeadingsMenuItem" Header="Show Headings" Click="showHeadingsMenuItem_Click" />
+                        <MenuItem Name="showFormulasMenuItem" Header="Show Formulas" Click="showFormulasMenuItem_Click" />
+                        <MenuItem Name="showGridMenuItem" Header="Show Grid" Click="showGridMenuItem_Click"/>
+                        <MenuItem Name="gridColorMenuItem" Header="Grid Color..." Click="gridColorMenuItem_Click"/>
+                    </MenuItem>
+                    <MenuItem Name="formatMenuItem" Header="Format..." Click="formatMenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Style="{StaticResource menuItemIcon}" Source="{StaticResource FormatMenuItemIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Orientation="Horizontal">
+            <vsue:PanelButton x:Name="panModeButton" Click="panModeButton_Click" ImageSource="{StaticResource PanModeButtonIcon}"/>
+            <vsue:PanelButton x:Name="zoomOutButton" Click="zoomOutButton_Click" ImageSource="{StaticResource ZoomOutButtonIcon}"/>
+            <ComboBox Name="zoomComboBox" Text="100%" SelectionChanged="zoomComboBox_SelectionChanged" LostFocus="zoomComboBox_LostFocus" PreviewKeyDown="zoomComboBox_PreviewKeyDown" Width="55" Height="26" IsEditable="True" VerticalContentAlignment="Center">
+                <ComboBoxItem>400%</ComboBoxItem>
+                <ComboBoxItem>300%</ComboBoxItem>
+                <ComboBoxItem>200%</ComboBoxItem>
+                <ComboBoxItem>150%</ComboBoxItem>
+                <ComboBoxItem>140%</ComboBoxItem>
+                <ComboBoxItem>130%</ComboBoxItem>
+                <ComboBoxItem>120%</ComboBoxItem>
+                <ComboBoxItem>110%</ComboBoxItem>
+                <ComboBoxItem>100%</ComboBoxItem>
+                <ComboBoxItem>90%</ComboBoxItem>
+                <ComboBoxItem>80%</ComboBoxItem>
+                <ComboBoxItem>70%</ComboBoxItem>
+                <ComboBoxItem>60%</ComboBoxItem>
+                <ComboBoxItem>50%</ComboBoxItem>
+                <ComboBoxItem>25%</ComboBoxItem>
+                <ComboBoxItem>10%</ComboBoxItem>
+            </ComboBox>
+            <vsue:PanelButton x:Name="zoomInButton" Click="zoomInButton_Click" ImageSource="{StaticResource ZoomInButtonIcon}"/>
+        </StackPanel>
+    </Grid>
+</local:SpreadsheetVisualEditorPanel>

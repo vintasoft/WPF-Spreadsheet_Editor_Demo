@@ -1,0 +1,2 @@
+The project contains the following compiler directives:
+1. REMOVE_PDF_PLUGIN - allows to disable code, which references to VintaSoft PDF .NET Plug-in

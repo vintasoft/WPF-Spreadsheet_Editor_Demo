@@ -1,0 +1,20 @@
+﻿<local:SpreadsheetVisualEditorPanel x:Class="WpfSpreadsheetEditorDemo.DefinedNamesPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfSpreadsheetEditorDemo" 
+             xmlns:vsue="clr-namespace:Vintasoft.Imaging.Wpf.UI.UIElements;assembly=Vintasoft.Imaging.Wpf.UI"
+             mc:Ignorable="d" 
+             Width="Auto" Height="Auto">
+    <local:SpreadsheetVisualEditorPanel.Resources>
+        <BitmapImage x:Key="insertDefinedNameButtonIcon" UriSource="../Resources/DefinedNamesUseInFormula.png" />
+        <BitmapImage x:Key="addDefineNameButtonIcon" UriSource="../Resources/DefinedNamesAdd.png" />
+        <BitmapImage x:Key="definedNamesButtonIcon" UriSource="../Resources/DefinedNamesManager.png" />
+    </local:SpreadsheetVisualEditorPanel.Resources>
+    <StackPanel Orientation="Horizontal">
+        <vsue:PanelButtonWithText x:Name="insertDefinedNameButton" Click="insertDefinedNameInFormulaButton_Click" Width="90" Text="Insert Name" ToolTip="Select Defined Name and use in Formula..." ImageSource="{StaticResource insertDefinedNameButtonIcon}"/>
+        <vsue:PanelButtonWithText x:Name="addDefineNameButton" Click="addDefineNameButton_Click" Width="90" Text="Define Name" ToolTip="Define Name from Selected Cells..." ImageSource="{StaticResource addDefineNameButtonIcon}"/>
+        <vsue:PanelButtonWithText x:Name="definedNamesButton" Click="definedNamesButton_Click" Width="100" Text="Name Manager" ToolTip="Open Defined Name Manager..." ImageSource="{StaticResource definedNamesButtonIcon}"/>
+    </StackPanel>
+</local:SpreadsheetVisualEditorPanel>

@@ -1,0 +1,704 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{152742DB-ED4B-4189-914B-96968D381D40}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WpfSpreadsheetEditorDemo</RootNamespace>
+    <AssemblyName>WpfSpreadsheetEditorDemo</AssemblyName>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <ApplicationIcon>App.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>true</Optimize>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>true</Optimize>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>true</Optimize>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Vintasoft.Imaging" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="4.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="4.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="4.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.UI" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Shared" Version="4.0.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="CustomControls\AnchorTypeEditorControl.xaml.cs">
+      <DependentUpon>AnchorTypeEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ColorPickerDialog\ColorPicker.cs">
+    </Compile>
+    <Compile Include="CustomControls\ColorPickerDialog\ColorPickerDialog.xaml.cs">
+      <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ColorPickerDialog\ColorThumb.cs">
+    </Compile>
+    <Compile Include="CustomControls\ColorPickerDialog\ColorUtilities.cs">
+    </Compile>
+    <Compile Include="CustomControls\ColorPickerDialog\HsvColor.cs">
+    </Compile>
+    <Compile Include="CustomControls\ColorPickerDialog\SpectrumSlider.cs">
+    </Compile>
+    <Compile Include="CustomControls\PaddingFEditorControl.xaml.cs">
+      <DependentUpon>PaddingFEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ThicknessEditorControl.xaml.cs">
+      <DependentUpon>ThicknessEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ActionProgressWindow.xaml.cs">
+      <DependentUpon>ActionProgressWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ColorManagementHelper.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ColorManagement\ColorManagementSettingsWindow.xaml.cs">
+      <DependentUpon>ColorManagementSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ColorManagement\ColorTransformSetEditorWindow.xaml.cs">
+      <DependentUpon>ColorTransformSetEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\CompositeRenderingSettingsWindow.xaml.cs">
+      <DependentUpon>CompositeRenderingSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\DocumentLayoutSettingsDialog.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\DocumentLayoutSettingsEditorControl.xaml.cs">
+      <DependentUpon>DocumentLayoutSettingsEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\DocxLayoutSettingsDialog.xaml.cs">
+      <DependentUpon>DocxLayoutSettingsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\ImageCollectionDocxLayoutSettingsManager.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\ImageCollectionLayoutSettingsManager.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\ImageCollectionXlsxLayoutSettingsManager.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\PageLayoutSettingsControl.xaml.cs">
+      <DependentUpon>PageLayoutSettingsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\XlsxLayoutSettingsDialog.xaml.cs">
+      <DependentUpon>XlsxLayoutSettingsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\XlsxPageLayoutSettingsTypeEditorControl.xaml.cs">
+      <DependentUpon>XlsxPageLayoutSettingsTypeEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\DocumentPasswordWindow.xaml.cs">
+      <DependentUpon>DocumentPasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Fonts\CustomFontProgramsController.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Fonts\FontProgramsTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\PageSettingsWindow.xaml.cs">
+      <DependentUpon>PageSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\RenderingSettingsWindow.xaml.cs">
+      <DependentUpon>RenderingSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\SelectImageWindow.xaml.cs">
+      <DependentUpon>SelectImageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode\FontDemosTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode\WpfAboutBoxBaseWindow.xaml.cs">
+      <DependentUpon>WpfAboutBoxBaseWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="CustomControls\AnchorTypeEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\ColorPanelControl\ColorPanelControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\ColorPickerDialog\ColorPickerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\FontFamilySelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\NumericUpDown.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\PaddingFEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\ThicknessEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ActionProgressWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ColorManagement\ColorManagementSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ColorManagement\ColorTransformSetEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\CompositeRenderingSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\DocumentLayoutSettingsEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\DocxLayoutSettingsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\PageLayoutSettingsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\XlsxLayoutSettingsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\XlsxPageLayoutSettingsTypeEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\DocumentPasswordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\PageSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\PropertyGridWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\RenderingSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\SelectImageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode\WpfAboutBoxBaseWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="CustomControls\ColorPanelControl\ColorPanelControl.xaml.cs">
+      <DependentUpon>ColorPanelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\CursorPanelControl\CursorPanelControl.cs">
+    </Compile>
+    <Compile Include="CustomControls\FontFamilySelector.xaml.cs">
+      <DependentUpon>FontFamilySelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\NumericUpDown.xaml.cs">
+      <DependentUpon>NumericUpDown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\CodecsFileFilters.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\PropertyGridWindow.xaml.cs">
+      <DependentUpon>PropertyGridWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Resources\DemosResourcesManager.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode\DemosTools.cs">
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CustomControls\CellReferencesAppearanceEditorControl.xaml.cs">
+      <DependentUpon>CellReferencesAppearanceEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\FontPropertiesEditorControl.xaml.cs">
+      <DependentUpon>FontPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\SheetDrawingLocationEditorControl.xaml.cs">
+      <DependentUpon>SheetDrawingLocationEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\CellPasteSpecialWindow.xaml.cs">
+      <DependentUpon>CellPasteSpecialWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\CellsStyleWindow.xaml.cs">
+      <DependentUpon>CellsStyleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Comments\EditCommentWindow.xaml.cs">
+      <DependentUpon>EditCommentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DefinedNames\DefinedNameManagerWindow.xaml.cs">
+      <DependentUpon>DefinedNameManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DefinedNames\EditDefinedNameWindow.xaml.cs">
+      <DependentUpon>EditDefinedNameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DefinedNames\SelectDefinedNameWindow.xaml.cs">
+      <DependentUpon>SelectDefinedNameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DocumentInfoWindow.xaml.cs">
+      <DependentUpon>DocumentInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Drawings\DrawingPropertiesWindow.xaml.cs">
+      <DependentUpon>DrawingPropertiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FindReplaceWindow.xaml.cs">
+      <DependentUpon>FindReplaceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Hyperlinks\EditHyperlinkWindow.xaml.cs">
+      <DependentUpon>EditHyperlinkWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\NumberValueEditorWindow.xaml.cs">
+      <DependentUpon>NumberValueEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\OptionsWindow.xaml.cs">
+      <DependentUpon>OptionsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Print\PrintPreviewWindow.xaml.cs">
+      <DependentUpon>PrintPreviewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SelectFunctionWindow.xaml.cs">
+      <DependentUpon>SelectFunctionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Worksheets\MoveWorksheetWindow.xaml.cs">
+      <DependentUpon>MoveWorksheetWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Worksheets\RenameWorksheetWindow.xaml.cs">
+      <DependentUpon>RenameWorksheetWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Worksheets\WorksheetFormatWindow.xaml.cs">
+      <DependentUpon>WorksheetFormatWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\CellsEditorPanel.xaml.cs">
+      <DependentUpon>CellsEditorPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\UndoPanel.xaml.cs">
+      <DependentUpon>UndoPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\CopyPastePanel.xaml.cs">
+      <DependentUpon>CopyPastePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\CommentsPanel.xaml.cs">
+      <DependentUpon>CommentsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\DefinedNamesPanel.xaml.cs">
+      <DependentUpon>DefinedNamesPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\FilePanel.xaml.cs">
+      <DependentUpon>FilePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\FindReplacePanel.xaml.cs">
+      <DependentUpon>FindReplacePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\NumberFormatPanel.xaml.cs">
+      <DependentUpon>NumberFormatPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\FontPropertiesPanel.xaml.cs">
+      <DependentUpon>FontPropertiesPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\FormulaPanel.xaml.cs">
+      <DependentUpon>FormulaPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\FunctionsPanel.xaml.cs">
+      <DependentUpon>FunctionsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\HelpPanel.xaml.cs">
+      <DependentUpon>HelpPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\NavigationPanel.xaml.cs">
+      <DependentUpon>NavigationPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\SpreadsheetVisualEditorPanel.cs" />
+    <Compile Include="Panels\TextAlignmentPanel.xaml.cs">
+      <DependentUpon>TextAlignmentPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Page Include="CustomControls\CellReferencesAppearanceEditorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\FontPropertiesEditorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\SheetDrawingLocationEditorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\CellPasteSpecialWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\CellsStyleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Comments\EditCommentWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\DefinedNames\DefinedNameManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\DefinedNames\EditDefinedNameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\DefinedNames\SelectDefinedNameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\DocumentInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Drawings\DrawingPropertiesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\FindReplaceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Hyperlinks\EditHyperlinkWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\NumberValueEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\OptionsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Print\PrintPreviewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\SelectFunctionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Worksheets\MoveWorksheetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Worksheets\RenameWorksheetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Worksheets\WorksheetFormatWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\CellsEditorPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\UndoPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\CopyPastePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\CommentsPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\DefinedNamesPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\FilePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\FindReplacePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\NumberFormatPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\FontPropertiesPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\FormulaPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\FunctionsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\HelpPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\NavigationPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\TextAlignmentPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Resource Include="WpfDemosCommonCode\Resources\VintasoftLogo.png">
+    </Resource>
+    <Resource Include="App.ico" />
+    <Resource Include="directives.txt" />
+    <Resource Include="Resources\PanMode.png" />
+    <Resource Include="Resources\BoldText.png" />
+    <Resource Include="Resources\Borders_Bottom.png" />
+    <Resource Include="Resources\Borders_BottomDouble.png" />
+    <Resource Include="Resources\Borders_BottomThick.png" />
+    <Resource Include="Resources\Borders_Horizontal.png" />
+    <Resource Include="Resources\Borders_InsideBig.png" />
+    <Resource Include="Resources\Borders_Left.png" />
+    <Resource Include="Resources\Borders_No.png" />
+    <Resource Include="Resources\Borders_NoBig.png" />
+    <Resource Include="Resources\Borders_Outside.png" />
+    <Resource Include="Resources\Borders_OutsideBig.png" />
+    <Resource Include="Resources\Borders_Right.png" />
+    <Resource Include="Resources\Borders_ThickOutside.png" />
+    <Resource Include="Resources\Borders_ThinAll.png" />
+    <Resource Include="Resources\Borders_Top.png" />
+    <Resource Include="Resources\Borders_TopBottom.png" />
+    <Resource Include="Resources\Borders_TopBottomDouble.png" />
+    <Resource Include="Resources\Borders_TopBottomThick.png" />
+    <Resource Include="Resources\Borders_Vertical.png" />
+    <Resource Include="Resources\ClearAll.png" />
+    <Resource Include="Resources\ClearAllBig.png" />
+    <Resource Include="Resources\ClearContents.png" />
+    <Resource Include="Resources\ClearHyperlinks.png" />
+    <Resource Include="Resources\ClearStyles.png" />
+    <Resource Include="Resources\Close.png" />
+    <Resource Include="Resources\ColumnsAutoWidth.png" />
+    <Resource Include="Resources\ColumnsWidth.png" />
+    <Resource Include="Resources\Comment_Delete.png" />
+    <Resource Include="Resources\Comment_Edit.png" />
+    <Resource Include="Resources\Comment_HideAll.png" />
+    <Resource Include="Resources\Comment_New.png" />
+    <Resource Include="Resources\Comment_Next.png" />
+    <Resource Include="Resources\Comment_Prev.png" />
+    <Resource Include="Resources\Comment_ShowAll.png" />
+    <Resource Include="Resources\Comment_ShowHide.png" />
+    <Resource Include="Resources\Copy.png" />
+    <Resource Include="Resources\Cut.png" />
+    <Resource Include="Resources\DecreaseTextSize.png" />
+    <Resource Include="Resources\DefinedNamesAdd.png" />
+    <Resource Include="Resources\DefinedNamesManager.png" />
+    <Resource Include="Resources\DefinedNamesUseInFormula.png" />
+    <Resource Include="Resources\DeleteCells.png" />
+    <Resource Include="Resources\DeleteColumns.png" />
+    <Resource Include="Resources\DeleteRows.png" />
+    <Resource Include="Resources\DeleteRowsBig.png" />
+    <Resource Include="Resources\DocumentInfo.png" />
+    <Resource Include="Resources\Export.png" />
+    <Resource Include="Resources\FillColor.png" />
+    <Resource Include="Resources\FillDown.png" />
+    <Resource Include="Resources\FillDownBig.png" />
+    <Resource Include="Resources\FillLeft.png" />
+    <Resource Include="Resources\FillRight.png" />
+    <Resource Include="Resources\FillUp.png" />
+    <Resource Include="Resources\FindContent.png" />
+    <Resource Include="Resources\FocusedCellValuePanel_Cancel.png" />
+    <Resource Include="Resources\FocusedCellValuePanel_Function.png" />
+    <Resource Include="Resources\FocusedCellValuePanel_Ok.png" />
+    <Resource Include="Resources\FontColor.png" />
+    <Resource Include="Resources\Help.png" />
+    <Resource Include="Resources\Hyperlink.png" />
+    <Resource Include="Resources\Image.png" />
+    <Resource Include="Resources\IncreaseTextSize.png" />
+    <Resource Include="Resources\InsertCells.png" />
+    <Resource Include="Resources\InsertColumns.png" />
+    <Resource Include="Resources\InsertFunction.png" />
+    <Resource Include="Resources\InsertRows.png" />
+    <Resource Include="Resources\InsertRowsBig.png" />
+    <Resource Include="Resources\ItalicText.png" />
+    <Resource Include="Resources\Merge.png" />
+    <Resource Include="Resources\MergeAcross.png" />
+    <Resource Include="Resources\MergeAndCenter.png" />
+    <Resource Include="Resources\MergeAndCenterBig.png" />
+    <Resource Include="Resources\NavigateFirst.png" />
+    <Resource Include="Resources\NavigateLast.png" />
+    <Resource Include="Resources\NavigateNext.png" />
+    <Resource Include="Resources\NavigatePrev.png" />
+    <Resource Include="Resources\NewBlankWorksheet.png" />
+    <Resource Include="Resources\NumberFormatProperties.png" />
+    <Resource Include="Resources\NumberFormat_Accounting.png" />
+    <Resource Include="Resources\NumberFormat_DecDecimal.png" />
+    <Resource Include="Resources\NumberFormat_IncDecimal.png" />
+    <Resource Include="Resources\NumberFormat_Percent.png" />
+    <Resource Include="Resources\Open.png" />
+    <Resource Include="Resources\Paste.png" />
+    <Resource Include="Resources\Print.png" />
+    <Resource Include="Resources\ReplaceContent.png" />
+    <Resource Include="Resources\RowColumnFormat.png" />
+    <Resource Include="Resources\RowsAutoHeight.png" />
+    <Resource Include="Resources\RowsHeight.png" />
+    <Resource Include="Resources\Save.png" />
+    <Resource Include="Resources\SaveAs.png" />
+    <Resource Include="Resources\Settings.png" />
+    <Resource Include="Resources\ShowFormulas.png" />
+    <Resource Include="Resources\StrikeoutText.png" />
+    <Resource Include="Resources\StylePainter.png" />
+    <Resource Include="Resources\TextAlignProperties.png" />
+    <Resource Include="Resources\TextHorizontalAlign_Center.png" />
+    <Resource Include="Resources\TextHorizontalAlign_Left.png" />
+    <Resource Include="Resources\TextHorizontalAlign_Right.png" />
+    <Resource Include="Resources\TextIndent_Dec.png" />
+    <Resource Include="Resources\TextIndent_Inc.png" />
+    <Resource Include="Resources\TextProperties.png" />
+    <Resource Include="Resources\TextVerticalAlign_Bottom.png" />
+    <Resource Include="Resources\TextVerticalAlign_Midle.png" />
+    <Resource Include="Resources\TextVerticalAlign_Top.png" />
+    <Resource Include="Resources\TextWrap.png" />
+    <Resource Include="Resources\UnderlinedText.png" />
+    <Resource Include="Resources\Unmerge.png" />
+    <Resource Include="Resources\Worksheet.png" />
+    <Resource Include="Resources\Worksheet_Add.png" />
+    <Resource Include="Resources\Worksheet_Copy.png" />
+    <Resource Include="Resources\Worksheet_Delete.png" />
+    <Resource Include="Resources\Worksheet_FormatProperties.png" />
+    <Resource Include="Resources\Worksheet_Move.png" />
+    <Resource Include="Resources\Worksheet_Rename.png" />
+    <Resource Include="Resources\Worksheet_ViewOptions.png" />
+    <Resource Include="Resources\ZoomIn.png" />
+    <Resource Include="Resources\ZoomOut.png" />
+    <Resource Include="Resources\Redo.png" />
+    <Resource Include="Resources\Undo.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

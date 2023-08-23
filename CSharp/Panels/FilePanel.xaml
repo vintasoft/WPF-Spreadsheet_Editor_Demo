@@ -1,0 +1,47 @@
+﻿<local:SpreadsheetVisualEditorPanel x:Class="WpfSpreadsheetEditorDemo.FilePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfSpreadsheetEditorDemo"
+             xmlns:vsue="clr-namespace:Vintasoft.Imaging.Wpf.UI.UIElements;assembly=Vintasoft.Imaging.Wpf.UI"
+             mc:Ignorable="d"
+             Height="Auto" d:DesignWidth="600">
+    <local:SpreadsheetVisualEditorPanel.Resources>
+        <BitmapImage x:Key="newButtonIcon" UriSource="../Resources/NewBlankWorksheet.png" />
+        <BitmapImage x:Key="openButtonIcon" UriSource="../Resources/Open.png" />
+        <BitmapImage x:Key="infoButtonIcon" UriSource="../Resources/DocumentInfo.png" />
+        <BitmapImage x:Key="saveButtonIcon" UriSource="../Resources/Save.png" />
+        <BitmapImage x:Key="saveAsButtonIcon" UriSource="../Resources/SaveAs.png" />
+        <BitmapImage x:Key="exportButtonIcon" UriSource="../Resources/Export.png" />
+        <BitmapImage x:Key="printSplitButtonIcon" UriSource="../Resources/Print.png" />
+        <BitmapImage x:Key="closeButtonIcon" UriSource="../Resources/Close.png" />
+        <BitmapImage x:Key="optionsButtonIcon" UriSource="../Resources/Settings.png" />
+    </local:SpreadsheetVisualEditorPanel.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Column="0">
+            <vsue:PanelButtonWithText x:Name="newButton" ToolTip="New blank Workbook (Ctrl+N)" Text="New" ImageSource="{StaticResource newButtonIcon}" Click="newButton_Click"/>
+            <vsue:PanelButtonWithText x:Name="openButton" ToolTip="Open Workbook... (Ctrl+O)" Text="Open" ImageSource="{StaticResource openButtonIcon}" Click="openButton_Click"/>
+            <vsue:PanelButtonWithText x:Name="infoButton" ToolTip="Info..." Text="Info" ImageSource="{StaticResource infoButtonIcon}" Click="infoButton_Click"/>
+            <vsue:PanelButtonWithText x:Name="saveButton" ToolTip="Save Changes (Ctrl+S)" Text="Save" ImageSource="{StaticResource saveButtonIcon}" Click="saveButton_Click"/>
+            <vsue:PanelButtonWithText x:Name="saveAsButton" ToolTip="Save As... (Ctrl+Shift+S)" Text="Save As" ImageSource="{StaticResource saveAsButtonIcon}" Click="saveAsButton_Click"/>
+            <vsue:PanelButtonWithText x:Name="exportButton" ToolTip="Export Workbook" Text="Export" ImageSource="{StaticResource exportButtonIcon}" Click="exportButton_Click"/>
+            <Separator  Style="{StaticResource verticalSeparatorStyle}" Width="60"/>
+            <Menu VerticalAlignment="Center" Height="58" Background="Transparent">
+                <vsue:PanelMenuItem x:Name="printSplitButton" ToolTip="Print... (Ctrl+P)" Text="Print" ImageSource="{StaticResource printSplitButtonIcon}" ButtonClick="printButton_ButtonClick">
+                    <MenuItem Header="Layout Settings..." Click="layoutSettingsMenuItem_Click" />
+                    <MenuItem Header="Page Settings..." Click="pageSettingsMenuItem_Click" />
+                    <MenuItem Header="Print Preview..." Click="printPreviewMenuItem_Click" />
+                </vsue:PanelMenuItem>
+            </Menu>
+            <Separator Style="{StaticResource verticalSeparatorStyle}" Width="60"/>
+            <vsue:PanelButtonWithText x:Name="closeButton" ToolTip="Close Workbook (Ctrl+X)" Text="Close" ImageSource="{StaticResource closeButtonIcon}" Click="closeButton_Click"/>
+        </StackPanel>
+        <vsue:PanelButtonWithText x:Name="optionsButton" ToolTip="Options..." Width="56" Grid.Column="2" Text="Options" ImageSource="{StaticResource optionsButtonIcon}" Click="optionsButton_Click"/>
+    </Grid>
+</local:SpreadsheetVisualEditorPanel>

@@ -1,0 +1,232 @@
+﻿<local:SpreadsheetVisualEditorPanel x:Class="WpfSpreadsheetEditorDemo.FontPropertiesPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfSpreadsheetEditorDemo"
+             xmlns:vsue="clr-namespace:Vintasoft.Imaging.Wpf.UI.UIElements;assembly=Vintasoft.Imaging.Wpf.UI"
+             mc:Ignorable="d" 
+             Height="Auto" Width="Auto">
+    <local:SpreadsheetVisualEditorPanel.Resources>
+        <Style x:Key="customVerticalSeparatorStyle" TargetType="{x:Type Separator}" BasedOn="{StaticResource verticalSeparatorStyle}">
+            <Setter Property="Width" Value="28" />
+        </Style>
+        <Style x:Key="dropDownMenuItemStyle" TargetType="{x:Type MenuItem}">
+            <Setter Property="Width" Value="34"/>
+            <Setter Property="Padding" Value="-2,0,0,0"/>
+            <Setter Property="Margin" Value="2,0,0,0"/>
+        </Style>
+        <Style x:Key="drowDownMenuItemButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource panelButtonDefaultStyle}">
+            <Setter Property="Width" Value="22"/>
+            <Setter Property="Height" Value="22"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="drowDownMenuItemImageStyle" TargetType="{x:Type Image}" BasedOn="{StaticResource menuItemIcon}"/>
+        <Style x:Key="drowDownMenuItemColorMarkerStyle" TargetType="{x:Type Rectangle}">
+            <Setter Property="Width" Value="16"/>
+            <Setter Property="Height" Value="4"/>
+            <Setter Property="Fill" Value="Red"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Margin" Value="0,0,0,1"/>
+        </Style>
+        <BitmapImage x:Key="incFontSizeButtonIcon" UriSource="../Resources/IncreaseTextSize.png" />
+        <BitmapImage x:Key="decFontSizeButtonIcon" UriSource="../Resources/DecreaseTextSize.png" />
+        <BitmapImage x:Key="boldFontButtonIcon" UriSource="../Resources/BoldText.png" />
+        <BitmapImage x:Key="italicFontButtonIcon" UriSource="../Resources/ItalicText.png" />
+        <BitmapImage x:Key="underlineButtonIcon" UriSource="../Resources/UnderlinedText.png" />
+        <BitmapImage x:Key="strikeoutButtonIcon" UriSource="../Resources/StrikeoutText.png" />
+        <BitmapImage x:Key="fillColorButtonIcon" UriSource="../Resources/FillColor.png" />
+        <BitmapImage x:Key="fontColorButtonIcon" UriSource="../Resources/FontColor.png" />
+        <BitmapImage x:Key="bordersButtonIcon" UriSource="../Resources/Borders_ThinAll.png" />
+        <BitmapImage x:Key="copyStyleButtonIcon" UriSource="../Resources/StylePainter.png" />
+        <BitmapImage x:Key="bottomBorderMenuItemIcon" UriSource="../Resources/Borders_Bottom.png" />
+        <BitmapImage x:Key="topBorderMenuItemIcon" UriSource="../Resources/Borders_Top.png" />
+        <BitmapImage x:Key="leftBorderMenuItemIcon" UriSource="../Resources/Borders_Left.png" />
+        <BitmapImage x:Key="rightBorderMenuItemIcon" UriSource="../Resources/Borders_Right.png" />
+        <BitmapImage x:Key="noBorderMenuItemIcon" UriSource="../Resources/Borders_No.png" />
+        <BitmapImage x:Key="allBordersMenuItemIcon" UriSource="../Resources/Borders_ThinAll.png" />
+        <BitmapImage x:Key="outsideBordersMenuItemIcon" UriSource="../Resources/Borders_Outside.png" />
+        <BitmapImage x:Key="thickOutsideBordersMenuItemIcon" UriSource="../Resources/Borders_ThickOutside.png" />
+        <BitmapImage x:Key="bottomDoubleBorderMenuItemIcon" UriSource="../Resources/Borders_BottomDouble.png" />
+        <BitmapImage x:Key="thickBottomBorderMenuItemIcon" UriSource="../Resources/Borders_BottomThick.png" />
+        <BitmapImage x:Key="topAndBottomBorderMenuItemIcon" UriSource="../Resources/Borders_TopBottom.png" />
+        <BitmapImage x:Key="topAndThickBottomBorderMenuItemIcon" UriSource="../Resources/Borders_TopBottomThick.png" />
+        <BitmapImage x:Key="topAndDoubleBottomBorderMenuItemIcon" UriSource="../Resources/Borders_TopBottomDouble.png" />
+        <BitmapImage x:Key="moreBordersMenuItemIcon" UriSource="../Resources/Borders_ThinAll.png" />
+        <BitmapImage x:Key="fontPropertiesButtonIcon" UriSource="../Resources/TextProperties.png" />
+    </local:SpreadsheetVisualEditorPanel.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="32" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Height="32">
+            <ComboBox Name="fontNameComboBox" IsTextSearchEnabled="False" IsEditable="True" Width="164" Height="23" Margin="3,0,0,0" LostFocus="fontNameComboBox_Leave" SelectionChanged="fontNameComboBox_SelectionChanged" PreviewKeyDown="fontNameComboBox_KeyDown"/>
+            <ComboBox Name="fontSizeComboBox" IsTextSearchEnabled="False" IsEditable="True" Width="50" Height="23" Margin="3,0" LostFocus="fontSizeComboBox_Leave" SelectionChanged="fontSizeComboBox_SelectionChanged" PreviewKeyDown="fontSizeComboBox_KeyDown">
+                <ComboBoxItem>8</ComboBoxItem>
+                <ComboBoxItem>9</ComboBoxItem>
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>11</ComboBoxItem>
+                <ComboBoxItem>12</ComboBoxItem>
+                <ComboBoxItem>14</ComboBoxItem>
+                <ComboBoxItem>16</ComboBoxItem>
+                <ComboBoxItem>18</ComboBoxItem>
+                <ComboBoxItem>20</ComboBoxItem>
+                <ComboBoxItem>22</ComboBoxItem>
+                <ComboBoxItem>24</ComboBoxItem>
+                <ComboBoxItem>26</ComboBoxItem>
+                <ComboBoxItem>28</ComboBoxItem>
+                <ComboBoxItem>36</ComboBoxItem>
+                <ComboBoxItem>48</ComboBoxItem>
+                <ComboBoxItem>72</ComboBoxItem>
+            </ComboBox>
+            <vsue:PanelButton ToolTip="Increase font size" x:Name="incFontSizeButton" ImageSource="{StaticResource incFontSizeButtonIcon}" Click="incFontSizeButton_Click"/>
+            <vsue:PanelButton ToolTip="Decrease font size" x:Name="decFontSizeButton" ImageSource="{StaticResource decFontSizeButtonIcon}" Click="decFontSizeButton_Click" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="32" Grid.Row="1">
+            <vsue:PanelButton ToolTip="Bold" x:Name="boldFontButton" ImageSource="{StaticResource boldFontButtonIcon}" Click="boldFontButton_Click"/>
+            <vsue:PanelButton ToolTip="Italic" x:Name="italicFontButton" ImageSource="{StaticResource italicFontButtonIcon}" Click="italicFontButton_Click"/>
+            <vsue:PanelButton ToolTip="Underline" x:Name="underlineButton" ImageSource="{StaticResource underlineButtonIcon}" Click="underlineButton_Click"/>
+            <vsue:PanelButton ToolTip="Strikeout" x:Name="strikeoutButton" ImageSource="{StaticResource strikeoutButtonIcon}" Click="strikeoutButton_Click"/>
+            <Separator Style="{StaticResource customVerticalSeparatorStyle}"/>
+            <Menu VerticalAlignment="Center" Height="26" Background="Transparent">
+                <MenuItem ToolTip="Fill Color" Name="fillColorButton" Style="{StaticResource dropDownMenuItemStyle}">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="fillColorButton_ButtonClick" Style="{StaticResource drowDownMenuItemButtonStyle}">
+                                <Grid Margin="0" Background="Transparent">
+                                    <Image Source="{StaticResource fillColorButtonIcon}" Style="{StaticResource drowDownMenuItemImageStyle}"/>
+                                    <Rectangle Name="fillColorButtonRectangle" Style="{StaticResource drowDownMenuItemColorMarkerStyle}"/>
+                                </Grid>
+                            </Button>
+                            <Path Fill="Black" Data="M 0 0 L 4 4 L 8 0 Z" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                    <MenuItem Name="noFillMenuItem" Header="No Fill" Click="noFillMenuItem_Click"/>
+                    <MenuItem Name="selectFillColorMenuItem" Header="Select Color..." Click="selectFillColorMenuItem_Click"/>
+                </MenuItem>
+                <MenuItem ToolTip="Font Color" Name="fontColorButton" Style="{StaticResource dropDownMenuItemStyle}">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="fontColorButton_ButtonClick" Style="{StaticResource drowDownMenuItemButtonStyle}">
+                                <Grid Margin="0" Background="Transparent">
+                                    <Image Source="{StaticResource fontColorButtonIcon}" Style="{StaticResource drowDownMenuItemImageStyle}"/>
+                                    <Rectangle Name="fontColorButtonRectangle" Style="{StaticResource drowDownMenuItemColorMarkerStyle}"/>
+                                </Grid>
+                            </Button>
+                            <Path Fill="Black" Data="M 0 0 L 4 4 L 8 0 Z" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                    <MenuItem Name="selectColorMenuItem" Header="Select Color..." Click="selectFontColorMenuItem_Click"/>
+                </MenuItem>
+            </Menu>
+            <Separator Style="{StaticResource customVerticalSeparatorStyle}"/>
+            <Menu VerticalAlignment="Center" Height="26" Background="Transparent">
+                <MenuItem ToolTip="Borders" Name="bordersButton" Style="{StaticResource dropDownMenuItemStyle}">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="bordersDropDownButton_Click" Style="{StaticResource drowDownMenuItemButtonStyle}">
+                                <Image x:Name="bordersButtonImage" Source="{StaticResource bordersButtonIcon}" Style="{StaticResource drowDownMenuItemImageStyle}"/>
+                            </Button>
+                            <Path Fill="Black" Data="M 0 0 L 4 4 L 8 0 Z" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                    <MenuItem Name="bottomBorderMenuItem" Header="Bottom Border" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource bottomBorderMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="topBorderMenuItem" Header="Top Border" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource topBorderMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="leftBorderMenuItem" Header="Left Border" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource leftBorderMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="rightBorderMenuItem" Header="Right Border" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource rightBorderMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+
+                    <MenuItem Name="noBorderMenuItem" Header="No Border" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource noBorderMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="allBordersMenuItem" Header="All Borders" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource allBordersMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="outsideBordersMenuItem" Header="Outside Borders" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource outsideBordersMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="thickOutsideBordersMenuItem" Header="Thick Outside Borders" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource thickOutsideBordersMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+
+                    <MenuItem Name="bottomDoubleBorderMenuItem" Header="Bottom Double Border" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource bottomDoubleBorderMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="thickBottomBorderMenuItem" Header="Thick Bottom Border" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource thickBottomBorderMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="topAndBottomBorderMenuItem" Header="Top and Bottom Border" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource topAndBottomBorderMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="topAndThickBottomBorderMenuItem" Header="Top and Thick Bottom Border" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource topAndThickBottomBorderMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="topAndDoubleBottomBorderMenuItem" Header="Top and Double Bottom Border" Click="bordersDropDownButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource topAndDoubleBottomBorderMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Name="borderColorMenuItem" Header="Border Color..." Click="borderColorMenuItem_Click"/>
+                    <MenuItem Name="moreBordersMenuItem" Header="More Borders..." Click="moreBordersMenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource moreBordersMenuItemIcon}" Style="{StaticResource menuItemIcon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+            <Separator/>
+            <vsue:PanelButton ToolTip="Style Painter" x:Name="copyStyleButton" ImageSource="{StaticResource copyStyleButtonIcon}" Click="copyStyleButton_Click"/>
+            <Separator/>
+            <vsue:PanelButton ToolTip="Text Properties..." x:Name="fontPropertiesButton" ImageSource="{StaticResource fontPropertiesButtonIcon}" Click="fontPropertiesButton_Click"/>
+        </StackPanel>
+    </Grid>
+</local:SpreadsheetVisualEditorPanel>

@@ -1,0 +1,124 @@
+﻿<Window x:Class="WpfSpreadsheetEditorDemo.FindReplaceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Find and Replace"
+        Topmost="True"
+        MinHeight="254"
+        MinWidth="510"
+        Width="510" Height="450">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Margin" Value="3,0,0,0"/>
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <CheckBox x:Name="replaceCheckBox" Grid.Row="0" VerticalAlignment="Center" Checked="replaceCheckBox_CheckedChanged" Unchecked="replaceCheckBox_CheckedChanged">Replace</CheckBox>
+        <Border Margin="3" BorderThickness="1" BorderBrush="{x:Static SystemColors.ActiveBorderBrush}" Grid.Row="1">
+            <Grid Background="{x:Static SystemColors.ControlLightLightBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0">Find what:</Label>
+                <ComboBox x:Name="findWhatComboBox" TextBoxBase.TextChanged="findWhatComboBox_TextChanged" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" IsEditable="True"/>
+
+                <Label x:Name="replaceLabel" Grid.Row="1" Grid.Column="0">Replace with:</Label>
+                <ComboBox x:Name="replaceWithComboBox" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" IsEditable="True"/>
+
+                <Label Grid.Row="2" Grid.Column="0">Within:</Label>
+                <ComboBox x:Name="findWithinComboBox" SelectionChanged="findWithinComboBox_SelectionChanged" Grid.Row="2" Grid.Column="1">
+                    <ComboBoxItem>Sheet</ComboBoxItem>
+                    <ComboBoxItem>Workbook</ComboBoxItem>
+                </ComboBox>
+                <CheckBox x:Name="matchCaseCheckBox" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">Match case</CheckBox>
+
+                <Label Grid.Row="3" Grid.Column="0">Search:</Label>
+                <ComboBox x:Name="searchComboBox" SelectionChanged="searchComboBox_SelectionChanged" Grid.Row="3" Grid.Column="1">
+                    <ComboBoxItem>By Rows</ComboBoxItem>
+                    <ComboBoxItem>By Columns</ComboBoxItem>
+                </ComboBox>
+                <CheckBox x:Name="matchContentsCheckBox" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">Match entire content</CheckBox>
+
+                <Label Grid.Row="4" Grid.Column="0">Look in:</Label>
+                <ComboBox x:Name="lookInComboBox" SelectionChanged="lookInComboBox_SelectionChanged" Grid.Row="4" Grid.Column="1">
+                    <ComboBoxItem>Formulas</ComboBoxItem>
+                    <ComboBoxItem>Values</ComboBoxItem>
+                    <ComboBoxItem>Comments</ComboBoxItem>
+                </ComboBox>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="replaceAllButton" Click="replaceAllButton_Click" Grid.Column="0">Replace All</Button>
+            <Button x:Name="replaceButton" Click="replaceButton_Click" Grid.Column="1">Replace</Button>
+            <Button x:Name="findAllButton" Click="findAllButton_Click" Grid.Column="3">Find All</Button>
+            <Button x:Name="findNextButton" Click="findNextButton_Click" Grid.Column="4">Find Next</Button>
+            <Button x:Name="closeButton" Click="closeButton_Click" Grid.Column="6" IsCancel="True">Close</Button>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ListView x:Name="resultListView" Grid.Row="0" SelectionChanged="resultListView_SelectionChanged">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False">
+                        <GridViewColumn Header="Sheet" Width="80" DisplayMemberBinding="{Binding Path=Sheet.Name}"/>
+                        <GridViewColumn Header="Cell" Width="80" DisplayMemberBinding="{Binding Path=Reference}"/>
+                        <GridViewColumn x:Name="valueGridViewColumn" Header="Value" Width="100" DisplayMemberBinding="{Binding Path=Value}"/>
+                        <GridViewColumn Header="Formula" Width="100" DisplayMemberBinding="{Binding Path=Formula}"/>
+                        <GridViewColumn Header="Comment" Width="100" DisplayMemberBinding="{Binding Path=CommentText}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <DockPanel Grid.Row="1">
+                <Label x:Name="statusLabel" HorizontalAlignment="Left">statusLabel</Label>
+                <Button x:Name="addToSelectionButton" Click="addToSelectionButton_Click" HorizontalAlignment="Right">Select All</Button>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</Window>
