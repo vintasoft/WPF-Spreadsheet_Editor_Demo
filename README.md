@@ -13,6 +13,7 @@ The project uses <a href="https://www.vintasoft.com/vsimaging-dotnet-index.html"
    ```
    Vintasoft.Imaging.ImagingGlobalSettings.Register("REG_USER", "REG_EMAIL", "EXPIRATION_DATE", "REG_CODE");
    ```
+
 3. Build the project ("SpreadsheetEditorDemo.NetX.csproj" file) in Visual Studio or using .NET CLI:
    ```
    dotnet build SpreadsheetEditorDemo.Net7.csproj
@@ -22,7 +23,7 @@ The project uses <a href="https://www.vintasoft.com/vsimaging-dotnet-index.html"
 
 
 ## Documentation
-VintaSoft Imaging .NET SDK on-line User Guide and API Reference is available here: https://www.vintasoft.com/docs/vsimaging-dotnet/
+VintaSoft Imaging .NET SDK on-line User Guide and API Reference for .NET developer is available here: https://www.vintasoft.com/docs/vsimaging-dotnet/
 
 
 ## Support
