@@ -52,7 +52,7 @@ The project uses <a href="https://www.vintasoft.com/vsimaging-dotnet-index.html"
 ## Usage
 1. Get the 30 day free evaluation license for <a href="https://www.vintasoft.com/vsimaging-dotnet-index.html" target="_blank">VintaSoft Imaging .NET SDK</a> as described here: <a href="https://www.vintasoft.com/docs/vsimaging-dotnet/Licensing-Evaluation.html" target="_blank">https://www.vintasoft.com/docs/vsimaging-dotnet/Licensing-Evaluation.html</a>
 
-2. Update the evaluation license in "CSharp\MainForm.cs" file:
+2. Update the evaluation license in "CSharp\MainWindow.xaml.cs" file:
    ```
    Vintasoft.Imaging.ImagingGlobalSettings.Register("REG_USER", "REG_EMAIL", "EXPIRATION_DATE", "REG_CODE");
    ```
