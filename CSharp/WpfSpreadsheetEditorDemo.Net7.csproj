@@ -47,7 +47,6 @@
     <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="12.2.6.1" />
     <PackageReference Include="Vintasoft.Shared" Version="4.0.0.3" />
   </ItemGroup>
-
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
