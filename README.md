@@ -46,7 +46,7 @@ This C# project uses <a href="https://www.vintasoft.com/vsimaging-dotnet-index.h
 
 
 ## Screenshot
-<img src="vintasoft-wpf-spreadsheet-editor-demo.png" alt="VintaSoft WPF Spreadsheet Editor Demo">
+<img src="vintasoft-wpf-spreadsheet-editor-demo.png" title="VintaSoft WPF Spreadsheet Editor Demo">
 
 
 ## Usage
