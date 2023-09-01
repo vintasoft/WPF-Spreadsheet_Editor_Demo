@@ -1254,6 +1254,7 @@ namespace WpfSpreadsheetEditorDemo
                 visualEditor.RowsHeight = previewCellsArea.Height;
                 verticalBorderButton.IsEnabled = false;
                 horizontalBorderButton.IsEnabled = false;
+                insideBorderPresetButton.IsEnabled = false;
             }
 
             double a1CellHeight = visualEditor.FocusedWorksheet.GetRowHeight(0);
@@ -1474,6 +1475,9 @@ namespace WpfSpreadsheetEditorDemo
                     style = CellBorderStyle.None;
                     break;
             }
+
+            if (style == CellBorderStyle.None)
+                return CellBorder.Invisible;
 
             return new CellBorder(style, WpfObjectConverter.Convert(lineColorPanelControl.Color));
         }

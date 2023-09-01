@@ -254,7 +254,7 @@ namespace WpfSpreadsheetEditorDemo
         /// </summary>
         private void decreaseDecimalButton_Click(object sender, RoutedEventArgs e)
         {
-            EditDecimalPlacesNumber(-1);
+            VisualEditor.NumberFormatDecimalPlaces--;
             UpdateUI();
         }
 
@@ -263,71 +263,9 @@ namespace WpfSpreadsheetEditorDemo
         /// </summary>
         private void increaseDecimalButton_Click(object sender, RoutedEventArgs e)
         {
-            EditDecimalPlacesNumber(1);
+            VisualEditor.NumberFormatDecimalPlaces++;
             UpdateUI();
         }
-
-        /// <summary>
-        /// Edits the number of decimal places of numbering format.
-        /// </summary>
-        /// <param name="changeAmount">The amount of decimal places to add (<i>changeAmount</i> is greater than 0)
-        /// or remove (<i>changeAmount</i> is less than 0).</param>
-        private void EditDecimalPlacesNumber(int changeAmount)
-        {
-            // get a string that represents the number format of focused cell
-            string formatString = VisualEditor.NumberFormat;
-            // convert string to the number format
-            NumberFormat format = VisualEditor.Document.ParseNumberFormat(formatString);
-
-            if (format is NumberingFormat)
-            {
-                NumberingFormatBase numberFormat = (NumberingFormat)format;
-                // change decimal places and set new format
-                numberFormat.DecimalPlaces += changeAmount;
-                VisualEditor.NumberFormat = numberFormat.ToString(VisualEditor.Document.Defaults.FormattingProperties);
-            }
-            else if (format is GeneralFormat)
-            {
-                // if number format can be created from cell value
-                NumberingFormat parsedFormat = null;
-                if (TryGetNumberFormat(VisualEditor.FocusedSpreadsheetCell.Value, out parsedFormat))
-                {
-                    // change decimal places and set new format
-                    parsedFormat.DecimalPlaces += changeAmount;
-                    VisualEditor.NumberFormat = parsedFormat.ToString(VisualEditor.Document.Defaults.FormattingProperties);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Creates the numbering format from cell value.
-        /// </summary>
-        /// <param name="cellText">Cell value.</param>
-        /// <param name="format">Created numbering format.</param>
-        /// <returns><b>True</b> if cellText is parsed successfully; otherwise, <b>false</b>.</returns>
-        private bool TryGetNumberFormat(string cellText, out NumberingFormat format)
-        {
-            // if cell value successfully parsed into a number
-            double value;
-            if (double.TryParse(cellText, System.Globalization.NumberStyles.Float, Culture, out value))
-            {
-                // find separator index
-                int separatorIndex = cellText.IndexOf(Culture.NumberFormat.NumberDecimalSeparator);
-                int decimalPlaces = 0;
-
-                // get the number of decimal places
-                if (separatorIndex > 0)
-                    decimalPlaces = cellText.Length - separatorIndex - 1;
-
-                // create the numbering format
-                format = new NumberingFormat(decimalPlaces, false);
-                return true;
-            }
-
-            format = null;
-            return false;
-        }
-
 
         #endregion
 

@@ -89,15 +89,15 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <PackageReference Include="Vintasoft.Imaging" Version="12.2.6.1" />
-    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="12.2.6.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="4.2.6.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="4.2.6.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="4.2.6.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="9.2.6.1" />
-    <PackageReference Include="Vintasoft.Imaging.UI" Version="12.2.6.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="12.2.6.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging" Version="12.2.7.1" />
+    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="12.2.7.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="4.2.7.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="4.2.7.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="4.2.7.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="9.2.7.1" />
+    <PackageReference Include="Vintasoft.Imaging.UI" Version="12.2.7.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="12.2.7.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="12.2.7.1" />
     <PackageReference Include="Vintasoft.Shared" Version="4.0.0.3" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -142,9 +142,6 @@
     <Compile Include="WpfDemosCommonCode.Imaging\ColorManagement\ColorTransformSetEditorWindow.xaml.cs">
       <DependentUpon>ColorTransformSetEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WpfDemosCommonCode.Imaging\CompositeRenderingSettingsWindow.xaml.cs">
-      <DependentUpon>CompositeRenderingSettingsWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\DocumentLayoutSettingsDialog.cs">
     </Compile>
     <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\DocumentLayoutSettingsEditorControl.xaml.cs">
@@ -173,8 +170,6 @@
     </Compile>
     <Compile Include="WpfDemosCommonCode.Imaging\Fonts\CustomFontProgramsController.cs">
     </Compile>
-    <Compile Include="WpfDemosCommonCode.Imaging\Fonts\FontProgramsTools.cs">
-    </Compile>
     <Compile Include="WpfDemosCommonCode.Imaging\PageSettingsWindow.xaml.cs">
       <DependentUpon>PageSettingsWindow.xaml</DependentUpon>
     </Compile>
@@ -183,8 +178,6 @@
     </Compile>
     <Compile Include="WpfDemosCommonCode.Imaging\SelectImageWindow.xaml.cs">
       <DependentUpon>SelectImageWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WpfDemosCommonCode\FontDemosTools.cs">
     </Compile>
     <Compile Include="WpfDemosCommonCode\WpfAboutBoxBaseWindow.xaml.cs">
       <DependentUpon>WpfAboutBoxBaseWindow.xaml</DependentUpon>
@@ -230,10 +223,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="WpfDemosCommonCode.Imaging\ColorManagement\ColorTransformSetEditorWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="WpfDemosCommonCode.Imaging\CompositeRenderingSettingsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -575,7 +564,6 @@
     <Resource Include="WpfDemosCommonCode\Resources\VintasoftLogo.png">
     </Resource>
     <Resource Include="App.ico" />
-    <Resource Include="directives.txt" />
     <Resource Include="Resources\PanMode.png" />
     <Resource Include="Resources\BoldText.png" />
     <Resource Include="Resources\Borders_Bottom.png" />

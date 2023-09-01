@@ -8,7 +8,7 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="WpfSpreadsheetEditorDemo.OptionsWindow"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Options" Height="410" Width="450">
+        Title="Options" Height="390" Width="600">
     <Window.Resources>
         <Style TargetType="{x:Type ComboBox}">
             <Setter Property="Height" Value="21" />
@@ -184,6 +184,38 @@
 
                         <Label Grid.Column="0" Grid.Row="1" Content="Grid Color Alpha:"/>
                         <cc:NumericUpDown x:Name="gridColorAlphaNumericUpDown" Margin="-1" Minimum="0" Maximum="255" Grid.Column="1" Grid.Row="1" Width="64" HorizontalAlignment="Left"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Transform Highlight">
+                    <Grid Margin="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="62"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <CheckBox Grid.Row="0" x:Name="showInteractiveAreaHighlightCheckBox" Content="Show interactive area highlight" VerticalAlignment="Center" Margin="1,0,0,0" />
+
+                        <Grid Grid.Row="1" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <GroupBox Grid.Column="0" Header="Headers transform area:">
+                                <scc:CellReferencesAppearanceEditorControl x:Name="headersTransformHighlightAppearanceEditor" />
+                            </GroupBox>
+
+                            <GroupBox Grid.Column="1" Header="Drawing transform area:">
+                                <scc:CellReferencesAppearanceEditorControl x:Name="sheetDrawingTransformHighlightAppearanceEditor" />
+                            </GroupBox>
+
+                            <GroupBox Grid.Column="2" Header="Cells transform area:">
+                                <scc:CellReferencesAppearanceEditorControl x:Name="cellsTransformHighlightAppearanceEditor" />
+                            </GroupBox>
+
+                        </Grid>
+                        
                     </Grid>
                 </TabItem>
             </TabControl>

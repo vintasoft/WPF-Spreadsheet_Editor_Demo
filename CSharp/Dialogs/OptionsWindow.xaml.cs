@@ -100,6 +100,12 @@ namespace WpfSpreadsheetEditorDemo
             // miscellaneous
             hyperlinkColorPanelControl.Color = WpfObjectConverter.Convert(_visualEditor.HyperlinkColor);
             gridColorAlphaNumericUpDown.Value = (int)Math.Round(255 - _visualEditor.GridColorAlpha * 255, 0);
+
+            // transform highlight
+            showInteractiveAreaHighlightCheckBox.IsChecked = _visualEditor.ShowInteractiveAreaHighlight;
+            headersTransformHighlightAppearanceEditor.CellsAppearance = _visualEditor.HeadersTransformHighlightAppearance;
+            sheetDrawingTransformHighlightAppearanceEditor.CellsAppearance = _visualEditor.SheetDrawingTransformHighlightAppearance;
+            cellsTransformHighlightAppearanceEditor.CellsAppearance = _visualEditor.CellsTransformHighlightAppearance;
         }
 
         /// <summary>
@@ -143,6 +149,12 @@ namespace WpfSpreadsheetEditorDemo
             // miscellaneous
             _visualEditor.HyperlinkColor = WpfObjectConverter.Convert(hyperlinkColorPanelControl.Color);
             _visualEditor.GridColorAlpha = 1 - (double)gridColorAlphaNumericUpDown.Value / 255;
+
+            // transform highlight
+            _visualEditor.ShowInteractiveAreaHighlight = showInteractiveAreaHighlightCheckBox.IsChecked.Value == true;
+            _visualEditor.HeadersTransformHighlightAppearance = headersTransformHighlightAppearanceEditor.CellsAppearance;
+            _visualEditor.SheetDrawingTransformHighlightAppearance = sheetDrawingTransformHighlightAppearanceEditor.CellsAppearance;
+            _visualEditor.CellsTransformHighlightAppearance = cellsTransformHighlightAppearanceEditor.CellsAppearance;
 
             DialogResult = true;
         }
