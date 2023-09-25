@@ -6,14 +6,112 @@
         xmlns:cc="clr-namespace:WpfDemosCommonCode.CustomControls" xmlns:customcontrols="clr-namespace:WpfSpreadsheetEditorDemo.CustomControls"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Drawing Properties" Height="324" Width="450">
+        Title="Drawing Properties" MinHeight="530" Height="530" Width="450">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TabControl Grid.Row="0">
+        <TabControl x:Name="drawingPropertiesTabControl" Grid.Row="0">
+            <TabItem x:Name="chartTabPage" Header="Chart">
+                <Grid Margin="0,0,0,3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">Title</TextBlock>
+                    <TextBox Name="titleTextBox" Grid.Column="2" Grid.Row="1" Height="23" VerticalAlignment="Center" TextChanged="titleTextBox_TextChanged"/>
+                    <TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Center">References range</TextBlock>
+                    <TextBox Name="dataRangeTextBox" Grid.Column="2" Grid.Row="2" Height="23" IsReadOnly="true"/>
+
+                    <GroupBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Header="Legend Entries (Series)">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="144"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="135"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <ComboBox Name="seriesComboBox" Grid.Column="2" Height="21" Margin="0,-25,0,0" SelectionChanged="seriesComboBox_SelectionChanged"/>
+
+                            <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Name</Label>
+                            <TextBox Name="nameRangeTextBox" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Height="23" VerticalAlignment="Center" IsReadOnly="true"/>
+                            <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Values</Label>
+                            <TextBox Name="valuesRangeTextBox" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Height="23" VerticalAlignment="Center" IsReadOnly="true"/>
+
+                            <CheckBox Name="smoothLineCheckBox" Grid.Column="0" Grid.Row="3" Content="Smooth Line" VerticalAlignment="Center" Margin="5,0,0,0" Checked="smoothLineCheckBox_CheckedChanged" Unchecked="smoothLineCheckBox_CheckedChanged"/>
+
+                            <GroupBox Name="dataPointGroupBox"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Header="Data Point">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="129"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="129"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ComboBox Name="dataPointComboBox" Grid.Column="3" Height="21" Margin="0,-25,0,0" SelectionChanged="dataPointComboBox_SelectionChanged"/>
+
+                                    <GroupBox Name="dataPointAppearanceGroupBox" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Header="Appearance">
+                                        <customcontrols:ShapeAppearanceEditorControl x:Name="dataPointAppearanceEditor" ShapeAppearanceChanged="dataPointAppearanceEditor_ShapeAppearanceChanged"/>
+                                    </GroupBox>
+
+                                    <GroupBox Name="markerAppearanceGroupBox" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Top" Header="Marker appearance">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="90"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <customcontrols:ShapeAppearanceEditorControl x:Name="markerAppearanceEditor" Grid.ColumnSpan="2" ShapeAppearanceChanged="markerProperties_Changed"/>
+
+                                            <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Marker Type</Label>
+                                            <ComboBox Name="markerTypeComboBox" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Height="21" Margin="0,3,2,3" SelectionChanged="markerProperties_Changed"/>
+                                            <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Marker Size</Label>
+                                            <cc:NumericUpDown x:Name="markerSizeNumericUpDown" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Maximum="72" Minimum="2" Value="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="-1,0,0,0" Width="64"/>
+                                        </Grid>
+                                    </GroupBox>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Header="Category Axis Labels">
+                        <TextBox x:Name="categoriesDataRangeTextBox" Height="23" Margin="3" IsReadOnly="true"/>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
             <TabItem Header="Common">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -41,9 +139,9 @@
                 </StackPanel>
             </TabItem>
         </TabControl>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,3,5,5">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,5,5">
             <Button Width="75" Height="23" Margin="0,0,5,0" Click="okButton_Click">OK</Button>
-            <Button Width="75" Height="23" IsCancel="True">Cancel</Button>
+            <Button Name="cancelButton" Width="75" Height="23" IsCancel="True">Cancel</Button>
         </StackPanel>
     </Grid>
 </Window>

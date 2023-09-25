@@ -46,7 +46,7 @@ namespace WpfSpreadsheetEditorDemo
             _panelFormats.Add("Number", new NumberingFormat(2, false));
             _panelFormats.Add("Date", DateFormat.Create("mm-dd-yy"));
             _panelFormats.Add("Time", TimeFormat.Create("h:mm"));
-            _panelFormats.Add("Currency", new CurrencyFormat(2, "[$$-en-US]", true));
+            _panelFormats.Add("Currency", new CurrencyFormat(2, true, "[$$-en-US]"));
             _panelFormats.Add("Percentage", new PercentageFormat(2));
             _panelFormats.Add("Scientific", new ScientificFormat(2));
             _panelFormats.Add("Text", new TextFormat());
@@ -176,7 +176,7 @@ namespace WpfSpreadsheetEditorDemo
         /// </summary>
         private void englishUnitedStatesMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CurrencyFormat format = new CurrencyFormat(2, "[$$-en-US]", true);
+            CurrencyFormat format = new CurrencyFormat(2, true, "[$$-en-US]");
             VisualEditor.NumberFormat = format.ToString(VisualEditor.Document.Defaults.FormattingProperties);
             UpdateUI();
         }
@@ -186,7 +186,7 @@ namespace WpfSpreadsheetEditorDemo
         /// </summary>
         private void englishUnitedKingdomMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CurrencyFormat format = new CurrencyFormat(2, "[$£-en-GB]", true);
+            CurrencyFormat format = new CurrencyFormat(2, true, "[$£-en-GB]");
             VisualEditor.NumberFormat = format.ToString(VisualEditor.Document.Defaults.FormattingProperties);
             UpdateUI();
         }
@@ -196,7 +196,7 @@ namespace WpfSpreadsheetEditorDemo
         /// </summary>
         private void euroMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CurrencyFormat format = new CurrencyFormat(2, "[$€-x-euro2]\\ ", true);
+            CurrencyFormat format = new CurrencyFormat(2, true, "[$€-x-euro2]\\ ");
             VisualEditor.NumberFormat = format.ToString(VisualEditor.Document.Defaults.FormattingProperties);
             UpdateUI();
         }
@@ -206,7 +206,7 @@ namespace WpfSpreadsheetEditorDemo
         /// </summary>
         private void chineseSimplifiedMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CurrencyFormat format = new CurrencyFormat(2, "[$¥-zh-CN]", true);
+            CurrencyFormat format = new CurrencyFormat(2, true, "[$¥-zh-CN]");
             VisualEditor.NumberFormat = format.ToString(VisualEditor.Document.Defaults.FormattingProperties);
             UpdateUI();
         }
@@ -216,7 +216,7 @@ namespace WpfSpreadsheetEditorDemo
         /// </summary>
         private void russianMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CurrencyFormat format = new CurrencyFormat(2, "\\ [$₽-ru-RU]", false);
+            CurrencyFormat format = new CurrencyFormat(2, false, "\\ [$₽-ru-RU]");
             VisualEditor.NumberFormat = format.ToString(VisualEditor.Document.Defaults.FormattingProperties);
             UpdateUI();
         }
@@ -226,7 +226,7 @@ namespace WpfSpreadsheetEditorDemo
         /// </summary>
         private void englishIndiaMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CurrencyFormat format = new CurrencyFormat(2, "[$₹-en-IN]\\ ", true);
+            CurrencyFormat format = new CurrencyFormat(2, true, "[$₹-en-IN]\\ ");
             VisualEditor.NumberFormat = format.ToString(VisualEditor.Document.Defaults.FormattingProperties);
             UpdateUI();
         }

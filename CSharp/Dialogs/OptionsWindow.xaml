@@ -79,6 +79,27 @@
                 <TabItem Header="Focused Formula Cells">
                     <scc:CellReferencesAppearanceEditorControl x:Name="focusedFormulaCellsAppearanceEditor" />
                 </TabItem>
+                <TabItem Header="Chart Cells">
+                    <Grid Grid.Row="1" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <GroupBox Grid.Column="0" Header="Series name area:">
+                            <scc:CellReferencesAppearanceEditorControl x:Name="seriesNameAppearanceEditor" />
+                        </GroupBox>
+
+                        <GroupBox Grid.Column="1" Header="Series values area:">
+                            <scc:CellReferencesAppearanceEditorControl x:Name="seriesValuesAppearanceEditor" />
+                        </GroupBox>
+
+                        <GroupBox Grid.Column="2" Header="Category axis area:">
+                            <scc:CellReferencesAppearanceEditorControl x:Name="categoryAxisAppearanceEditor" />
+                        </GroupBox>
+                    </Grid>
+                </TabItem>
                 <TabItem Header="Headings and Selection">
                     <Grid Margin="3">
                         <Grid.ColumnDefinitions>
@@ -168,24 +189,6 @@
                         </Grid>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Miscellaneous">
-                    <Grid Margin="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="140"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="28"/>
-                            <RowDefinition Height="28"/>
-                        </Grid.RowDefinitions>
-
-                        <Label Grid.Column="0" Grid.Row="0" Content="Hyperlink Color:"/>
-                        <cc:ColorPanelControl x:Name="hyperlinkColorPanelControl" Grid.Column="1" Grid.Row="0" CanEditAlphaChannel="False"/>
-
-                        <Label Grid.Column="0" Grid.Row="1" Content="Grid Color Alpha:"/>
-                        <cc:NumericUpDown x:Name="gridColorAlphaNumericUpDown" Margin="-1" Minimum="0" Maximum="255" Grid.Column="1" Grid.Row="1" Width="64" HorizontalAlignment="Left"/>
-                    </Grid>
-                </TabItem>
                 <TabItem Header="Transform Highlight">
                     <Grid Margin="3">
                         <Grid.RowDefinitions>
@@ -213,9 +216,25 @@
                             <GroupBox Grid.Column="2" Header="Cells transform area:">
                                 <scc:CellReferencesAppearanceEditorControl x:Name="cellsTransformHighlightAppearanceEditor" />
                             </GroupBox>
-
                         </Grid>
-                        
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Miscellaneous">
+                    <Grid Margin="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="28"/>
+                            <RowDefinition Height="28"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Column="0" Grid.Row="0" Content="Hyperlink Color:"/>
+                        <cc:ColorPanelControl x:Name="hyperlinkColorPanelControl" Grid.Column="1" Grid.Row="0" CanEditAlphaChannel="False"/>
+
+                        <Label Grid.Column="0" Grid.Row="1" Content="Grid Color Alpha:"/>
+                        <cc:NumericUpDown x:Name="gridColorAlphaNumericUpDown" Margin="-1" Minimum="0" Maximum="255" Grid.Column="1" Grid.Row="1" Width="64" HorizontalAlignment="Left"/>
                     </Grid>
                 </TabItem>
             </TabControl>

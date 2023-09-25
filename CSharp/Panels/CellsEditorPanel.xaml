@@ -14,6 +14,7 @@
         <BitmapImage x:Key="mergeMenuButtonIcon" UriSource="../Resources/MergeAndCenterBig.png" />
         <BitmapImage x:Key="clearButtonIcon" UriSource="../Resources/ClearAllBig.png" />
         <BitmapImage x:Key="fillButtonIcon" UriSource="../Resources/FillDownBig.png" />
+        <BitmapImage x:Key="chartButtonIcon" UriSource="../Resources/ChartBig.png" />
         <BitmapImage x:Key="pictureButtonIcon" UriSource="../Resources/Image.png" />
         <BitmapImage x:Key="hypelinkSplitButtonIcon" UriSource="../Resources/Hyperlink.png" />
         <BitmapImage x:Key="insertRowsMenuItemIcon" UriSource="../Resources/InsertRows.png" />
@@ -177,6 +178,14 @@
                         <Image Style="{StaticResource menuItemIcon}" Source="{StaticResource fillLeftMenuItemIcon}"/>
                     </MenuItem.Icon>
                 </MenuItem>
+            </vsue:PanelMenuItem>
+            <vsue:PanelMenuItem x:Name="chartButton" ToolTip="Chart" Text="Chart" ButtonClick="chartButton_ButtonClick" ImageSource="{StaticResource chartButtonIcon}">
+                <MenuItem Header="Add Chart..." Click="addChartMenuItem_Click"/>
+                <MenuItem Header="Remove Chart" Click="removeChartMenuItem_Click"/>
+                <MenuItem Header="Switch Rows/Columns" Click="switchRowColumnMenuItem_Click"/>
+                <Separator/>
+                <MenuItem Header="Select Chart Values" Click="selectChartValuesMenuItem_Click"/>
+                <MenuItem Header="Properties..." Click="chartPropertiesMenuItem_Click"/>
             </vsue:PanelMenuItem>
             <vsue:PanelMenuItem x:Name="pictureButton" ButtonClick="pictureButton_ButtonClick" ToolTip="Picture" Text="Picture" ImageSource="{StaticResource pictureButtonIcon}" SubmenuOpened="pictureButton_SubmenuOpened">
                 <MenuItem Header="Add Picture..." Click="addPictureMenuItem_Click"/>

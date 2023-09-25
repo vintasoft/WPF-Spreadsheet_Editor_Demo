@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="VintaSoft Spreadsheet Editor Demo" 
-        Width="1000" Height="700"
+        Width="1040" Height="700"
         MinWidth="550" MinHeight="300"
         PreviewKeyDown="Window_PreviewKeyDown"
         Closing="Window_Closing">

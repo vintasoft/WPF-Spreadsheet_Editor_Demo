@@ -98,6 +98,7 @@ namespace WpfSpreadsheetEditorDemo
                 args.OldValue.VisualEditor.FocusedCellChanged -= VisualEditor_FocusedCellChanged;
                 args.OldValue.VisualEditor.FocusedCommentChanged -= VisualEditor_FocusedCommentChanged;
                 args.OldValue.VisualEditor.FocusedCellsChanged -= VisualEditor_FocusedCellsChanged;
+                args.OldValue.VisualEditor.FocusedDrawingChanged -= VisualEditor_FocusedDrawingChanged;
                 args.OldValue.VisualEditor.CellsStylePropertiesChanged -= VisualEditor_CellsStylePropertiesChanged;
                 args.OldValue.VisualEditor.FocusedWorksheetChanged -= VisualEditor_FocusedWorksheetChanged;
             }
@@ -106,6 +107,7 @@ namespace WpfSpreadsheetEditorDemo
                 args.NewValue.VisualEditor.FocusedCellChanged += VisualEditor_FocusedCellChanged;
                 args.NewValue.VisualEditor.FocusedCommentChanged += VisualEditor_FocusedCommentChanged;
                 args.NewValue.VisualEditor.FocusedCellsChanged += VisualEditor_FocusedCellsChanged;
+                args.NewValue.VisualEditor.FocusedDrawingChanged += VisualEditor_FocusedDrawingChanged;
                 args.NewValue.VisualEditor.CellsStylePropertiesChanged += VisualEditor_CellsStylePropertiesChanged;
                 args.NewValue.VisualEditor.FocusedWorksheetChanged += VisualEditor_FocusedWorksheetChanged;
             }
@@ -573,6 +575,11 @@ namespace WpfSpreadsheetEditorDemo
             UpdateUI();
         }
 
+        private void VisualEditor_FocusedDrawingChanged(object sender, PropertyChangedEventArgs<SheetDrawing> e)
+        {
+            UpdateUI();
+        }
+
         private void VisualEditor_FocusedCellsChanged(object sender, PropertyChangedEventArgs<CellReferences> e)
         {
             // if source style cell is selected and new selection is complete
@@ -620,7 +627,8 @@ namespace WpfSpreadsheetEditorDemo
             _updateUI = true;
             try
             {
-                if (VisualEditor.FocusedCell == null && VisualEditor.FocusedComment == null)
+                SheetDrawing focusedDrawing = VisualEditor.FocusedDrawing;
+                if (VisualEditor.FocusedCell == null && VisualEditor.FocusedComment == null && (focusedDrawing == null || focusedDrawing.Appearance == null))
                 {
                     IsEnabled = false;
                 }
@@ -636,10 +644,10 @@ namespace WpfSpreadsheetEditorDemo
                     underlineButton.IsChecked = fontProperties.IsUnderline;
                     strikeoutButton.IsChecked = fontProperties.IsStrikeout;
 
-                    bool commentIsFocused = VisualEditor.FocusedComment != null;
-                    bordersButton.IsEnabled = !commentIsFocused;
-                    fontPropertiesButton.IsEnabled = !commentIsFocused;
-                    copyStyleButton.IsEnabled = !commentIsFocused;
+                    bool sheetIsFocused = VisualEditor.FocusedComment == null && (focusedDrawing == null || focusedDrawing.Appearance == null);
+                    bordersButton.IsEnabled = sheetIsFocused;
+                    fontPropertiesButton.IsEnabled = sheetIsFocused;
+                    copyStyleButton.IsEnabled = sheetIsFocused;
                 }
             }
             finally

@@ -1,0 +1,59 @@
+﻿<Window x:Class="WpfSpreadsheetEditorDemo.InsertChartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="clr-namespace:Vintasoft.Imaging.Office.Spreadsheet.Wpf.UI;assembly=Vintasoft.Imaging.Office.OpenXml.Wpf.UI"
+        mc:Ignorable="d"
+        Title="Insert chart"
+        Topmost="True"
+        MinHeight="254"
+        MinWidth="510"
+        Width="880" Height="713">
+    <!--<Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Margin" Value="3,0,0,0"/>
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <ListBox x:Name="chartTypeListBox" Grid.Row="1" Grid.Column="1" Margin="0,0,5,5" SelectionChanged="chartTypeListBox_SelectionChanged"/>
+
+        <ListBox x:Name="chartSubtypeListBox" Grid.Row="2" Grid.Column="1" Margin="0,5,5,0" SelectionChanged="chartSubtypeListBox_SelectionChanged"/>
+
+        <Border Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Margin="5,0,0,0" BorderThickness="1" BorderBrush="LightGray">
+            <ui:WpfSpreadsheetEditorControl x:Name="chartViewer" />
+        </Border>
+
+        <StackPanel Grid.Row="3" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="okButton" Width="75" Height="23" Margin="0,0,5,0" Click="okButton_Click">OK</Button>
+            <Button Width="75" Height="23" IsCancel="True">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>

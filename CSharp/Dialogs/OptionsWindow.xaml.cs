@@ -79,6 +79,11 @@ namespace WpfSpreadsheetEditorDemo
             formulaCellsAppearanceEditor.CellsAppearance = _visualEditor.FormulaAppearance;
             focusedFormulaCellsAppearanceEditor.CellsAppearance = _visualEditor.FormulaFocusedAppearance;
 
+            // chart appearances
+            seriesNameAppearanceEditor.CellsAppearance = _visualEditor.ChartSeriesNameAppearance;
+            seriesValuesAppearanceEditor.CellsAppearance = _visualEditor.ChartSeriesValuesAppearance;
+            categoryAxisAppearanceEditor.CellsAppearance = _visualEditor.ChartCategoryAxisAppearance;
+
             // headings
             headingsColorPanelControl.Color = WpfObjectConverter.Convert(_visualEditor.HeadingsColor);
             headingsTextColorPanelControl.Color = WpfObjectConverter.Convert(_visualEditor.HeadingsTextColor);
@@ -97,15 +102,15 @@ namespace WpfSpreadsheetEditorDemo
             commentAppearanceEditor.CellsAppearance = _visualEditor.CommentAppearance;
             focusedCommentAppearanceEditor.CellsAppearance = _visualEditor.CommentFocusedAppearance;
 
-            // miscellaneous
-            hyperlinkColorPanelControl.Color = WpfObjectConverter.Convert(_visualEditor.HyperlinkColor);
-            gridColorAlphaNumericUpDown.Value = (int)Math.Round(255 - _visualEditor.GridColorAlpha * 255, 0);
-
             // transform highlight
             showInteractiveAreaHighlightCheckBox.IsChecked = _visualEditor.ShowInteractiveAreaHighlight;
             headersTransformHighlightAppearanceEditor.CellsAppearance = _visualEditor.HeadersTransformHighlightAppearance;
             sheetDrawingTransformHighlightAppearanceEditor.CellsAppearance = _visualEditor.SheetDrawingTransformHighlightAppearance;
             cellsTransformHighlightAppearanceEditor.CellsAppearance = _visualEditor.CellsTransformHighlightAppearance;
+
+            // miscellaneous
+            hyperlinkColorPanelControl.Color = WpfObjectConverter.Convert(_visualEditor.HyperlinkColor);
+            gridColorAlphaNumericUpDown.Value = (int)Math.Round(255 - _visualEditor.GridColorAlpha * 255, 0);
         }
 
         /// <summary>
@@ -128,6 +133,11 @@ namespace WpfSpreadsheetEditorDemo
             _visualEditor.FormulaAppearance = formulaCellsAppearanceEditor.CellsAppearance;
             _visualEditor.FormulaFocusedAppearance = focusedFormulaCellsAppearanceEditor.CellsAppearance;
 
+            // chart appearances
+            _visualEditor.ChartSeriesNameAppearance = seriesNameAppearanceEditor.CellsAppearance;
+            _visualEditor.ChartSeriesValuesAppearance = seriesValuesAppearanceEditor.CellsAppearance;
+            _visualEditor.ChartCategoryAxisAppearance = categoryAxisAppearanceEditor.CellsAppearance;
+
             // headings
             _visualEditor.HeadingsColor = WpfObjectConverter.Convert(headingsColorPanelControl.Color);
             _visualEditor.HeadingsTextColor = WpfObjectConverter.Convert(headingsTextColorPanelControl.Color);
@@ -146,15 +156,15 @@ namespace WpfSpreadsheetEditorDemo
             _visualEditor.CommentAppearance = commentAppearanceEditor.CellsAppearance;
             _visualEditor.CommentFocusedAppearance = focusedCommentAppearanceEditor.CellsAppearance;
 
-            // miscellaneous
-            _visualEditor.HyperlinkColor = WpfObjectConverter.Convert(hyperlinkColorPanelControl.Color);
-            _visualEditor.GridColorAlpha = 1 - (double)gridColorAlphaNumericUpDown.Value / 255;
-
             // transform highlight
             _visualEditor.ShowInteractiveAreaHighlight = showInteractiveAreaHighlightCheckBox.IsChecked.Value == true;
             _visualEditor.HeadersTransformHighlightAppearance = headersTransformHighlightAppearanceEditor.CellsAppearance;
             _visualEditor.SheetDrawingTransformHighlightAppearance = sheetDrawingTransformHighlightAppearanceEditor.CellsAppearance;
             _visualEditor.CellsTransformHighlightAppearance = cellsTransformHighlightAppearanceEditor.CellsAppearance;
+
+            // miscellaneous
+            _visualEditor.HyperlinkColor = WpfObjectConverter.Convert(hyperlinkColorPanelControl.Color);
+            _visualEditor.GridColorAlpha = 1 - (double)gridColorAlphaNumericUpDown.Value / 255;
 
             DialogResult = true;
         }

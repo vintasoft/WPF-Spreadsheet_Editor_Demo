@@ -30,6 +30,10 @@ namespace WpfSpreadsheetEditorDemo.CustomControls
         public SheetDrawingLocationEditorControl()
         {
             InitializeComponent();
+
+            xNumericUpDown.Minimum = double.MinValue;
+            yNumericUpDown.Minimum = double.MinValue;
+
             UpdateUI();
         }
 

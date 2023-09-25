@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="WpfSpreadsheetEditorDemo.CustomControls.ShapeAppearanceEditorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cc="clr-namespace:WpfDemosCommonCode.CustomControls"
+             mc:Ignorable="d" 
+             Height="Auto" Width="Auto">
+    <Grid Margin="0,0,2,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0">Fill Color:</Label>
+        <cc:ColorPanelControl x:Name="fillColorPanelControl" Grid.Column="1" Grid.Row="0" ColorChanged="fillColorPanelControl_ColorChanged"/>
+
+        <Label Grid.Column="0" Grid.Row="1">Outline Color:</Label>
+        <cc:ColorPanelControl x:Name="outlineColorPanelControl" Grid.Column="1" Grid.Row="1" ColorChanged="outlineColorPanelControl_ColorChanged"/>
+
+        <Label Grid.Column="0" Grid.Row="2">Outline Width:</Label>
+        <cc:NumericUpDown x:Name="outlineWidthNumericUpDown" Grid.Column="1" Grid.Row="2" ValueChanged="outlineWidthNumericUpDown_ValueChanged" Width="64" HorizontalAlignment="Left" Margin="-1,0,0,0"/>
+    </Grid>
+</UserControl>

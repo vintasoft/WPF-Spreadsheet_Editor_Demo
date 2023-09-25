@@ -182,6 +182,7 @@
     <Compile Include="WpfDemosCommonCode\WpfAboutBoxBaseWindow.xaml.cs">
       <DependentUpon>WpfAboutBoxBaseWindow.xaml</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Resources\ChartSource.xlsx" />
     <Page Include="CustomControls\AnchorTypeEditorControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -294,6 +295,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CustomControls\ShapeAppearanceEditorControl.xaml.cs">
+      <DependentUpon>ShapeAppearanceEditorControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\CellReferencesAppearanceEditorControl.xaml.cs">
       <DependentUpon>CellReferencesAppearanceEditorControl.xaml</DependentUpon>
     </Compile>
@@ -308,6 +312,11 @@
     </Compile>
     <Compile Include="Dialogs\CellsStyleWindow.xaml.cs">
       <DependentUpon>CellsStyleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Charts\ChartSubtypeItem.cs" />
+    <Compile Include="Dialogs\Charts\ChartTypeItem.cs" />
+    <Compile Include="Dialogs\Charts\InsertChartWindow.xaml.cs">
+      <DependentUpon>InsertChartWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\Comments\EditCommentWindow.xaml.cs">
       <DependentUpon>EditCommentWindow.xaml</DependentUpon>
@@ -421,6 +430,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Page Include="CustomControls\ShapeAppearanceEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CustomControls\CellReferencesAppearanceEditorControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -440,6 +453,10 @@
     <Page Include="Dialogs\CellsStyleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Charts\InsertChartWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Dialogs\Comments\EditCommentWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -685,6 +702,7 @@
     <Resource Include="Resources\ZoomOut.png" />
     <Resource Include="Resources\Redo.png" />
     <Resource Include="Resources\Undo.png" />
+    <Resource Include="Resources\ChartBig.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -96,6 +96,7 @@ namespace WpfSpreadsheetEditorDemo
             VisualEditor.CellCommentClick += VisualEditor_CellCommentClick;
             VisualEditor.InvalidCellReferences += VisualEditor_InvalidCellReferences;
             VisualEditor.FocusedCellChanged += VisualEditor_FocusedCellChanged;
+            VisualEditor.FocusedCellsChanged += VisualEditor_FocusedCellsChanged;
             VisualEditor.ContextMenuOpen += VisualEditor_ContextMenuOpen;
             VisualEditor.Editor = null;
             SetStatus("");
@@ -157,6 +158,21 @@ namespace WpfSpreadsheetEditorDemo
         {
             if (!filePanel1.CheckChanges())
                 e.Cancel = true;
+        }
+
+        private void VisualEditor_FocusedCellsChanged(object sender, PropertyChangedEventArgs<CellReferences> e)
+        {
+            if (e.NewValue != null)
+            {
+                if (VisualEditor.IsFocusedCellsChanging)
+                    SetStatus(e.NewValue.ToString());
+                else if (Equals(e.NewValue, e.OldValue))
+                    SetStatus("");
+            }
+            else
+            {
+                SetStatus("");
+            }
         }
 
         private void VisualEditor_HoveredDrawingChanged(object sender, PropertyChangedEventArgs<SheetDrawing> e)

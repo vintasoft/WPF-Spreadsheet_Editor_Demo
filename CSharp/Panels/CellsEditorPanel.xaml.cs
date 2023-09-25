@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 using Microsoft.Win32;
 
@@ -31,6 +32,11 @@ namespace WpfSpreadsheetEditorDemo
         /// Maximum row height in DIP.
         /// </summary>
         const double MAX_ROW_HEIGHT = 545;
+
+        /// <summary>
+        /// The chart templates resource name.
+        /// </summary>
+        const string ChartTemplatesResourceName = "ChartSource.xlsx";
 
         /// <summary>
         /// The "Insert Rows" menu item.
@@ -67,6 +73,31 @@ namespace WpfSpreadsheetEditorDemo
         /// </summary>
         readonly MenuItem removeHyperlinkMenuItem;
 
+        /// <summary>
+        /// The "Add Chart..." menu item.
+        /// </summary>
+        readonly MenuItem addChartMenuItem;
+
+        /// <summary>
+        /// The "Properties..." menu item.
+        /// </summary>
+        readonly MenuItem chartPropertiesMenuItem;
+
+        /// <summary>
+        /// The "Remove Chart" menu item.
+        /// </summary>
+        readonly MenuItem removeChartMenuItem;
+
+        /// <summary>
+        /// The "Switch Rows/Columns" menu item.
+        /// </summary>
+        readonly MenuItem switchRowColumnMenuItem;
+
+        /// <summary>
+        /// The "Select Chart Values" menu item.
+        /// </summary>
+        readonly MenuItem selectChartValuesMenuItem;
+
         #endregion
 
 
@@ -82,6 +113,12 @@ namespace WpfSpreadsheetEditorDemo
 
             insertRowsMenuItem = (MenuItem)insertButton.Items[0];
             insertColumnsMenuItem = (MenuItem)insertButton.Items[1];
+
+            addChartMenuItem = (MenuItem)chartButton.Items[0];
+            removeChartMenuItem = (MenuItem)chartButton.Items[1];
+            switchRowColumnMenuItem = (MenuItem)chartButton.Items[2];
+            selectChartValuesMenuItem = (MenuItem)chartButton.Items[4];
+            chartPropertiesMenuItem = (MenuItem)chartButton.Items[5];
 
             setPictureMenuItem = (MenuItem)pictureButton.Items[1];
             picturePropertiesMenuItem = (MenuItem)pictureButton.Items[2];
@@ -110,16 +147,26 @@ namespace WpfSpreadsheetEditorDemo
             if (args.OldValue != null)
             {
                 args.OldValue.VisualEditor.FocusedCellsChanged -= VisualEditor_FocusedCellsChanged;
+                args.OldValue.VisualEditor.FocusedDrawingChanged -= VisualEditor_FocusedDrawingChanged;
+                args.OldValue.VisualEditor.ChartTemplatesRequest -= VisualEditor_ChartTemplatesRequest;
+                args.OldValue.MouseDoubleClick -= SpreadsheetEditorControl_MouseDoubleClick;
             }
 
             if (args.NewValue != null)
             {
                 args.NewValue.VisualEditor.FocusedCellsChanged += VisualEditor_FocusedCellsChanged;
+                args.NewValue.VisualEditor.FocusedDrawingChanged += VisualEditor_FocusedDrawingChanged;
+                args.NewValue.VisualEditor.ChartTemplatesRequest += VisualEditor_ChartTemplatesRequest;
+                args.NewValue.MouseDoubleClick += SpreadsheetEditorControl_MouseDoubleClick;
             }
 
             UpdateUI();
         }
 
+        private void VisualEditor_FocusedDrawingChanged(object sender, PropertyChangedEventArgs<SheetDrawing> e)
+        {
+            UpdateUI();
+        }
 
         private void VisualEditor_FocusedCellsChanged(object sender, PropertyChangedEventArgs<CellReferences> e)
         {
@@ -147,6 +194,15 @@ namespace WpfSpreadsheetEditorDemo
                 fillButton.IsEnabled = hasFocusedCells;
                 insertColumnsMenuItem.IsEnabled = VisualEditor.CanInsertEmptyColumns;
                 insertRowsMenuItem.IsEnabled = VisualEditor.CanInsertEmptyRows;
+                addChartMenuItem.IsEnabled = VisualEditor.FocusedCells != null;
+
+                bool chartIsSelected = VisualEditor.FocusedDrawing != null && VisualEditor.FocusedDrawing.ChartProperties != null;
+                pictureButton.IsEnabled = !chartIsSelected || VisualEditor.FocusedDrawing == null;
+                chartButton.IsEnabled = chartIsSelected || VisualEditor.FocusedDrawing == null;
+                removeChartMenuItem.IsEnabled = chartIsSelected;
+                chartPropertiesMenuItem.IsEnabled = chartIsSelected;
+                selectChartValuesMenuItem.IsEnabled = chartIsSelected;
+                switchRowColumnMenuItem.IsEnabled = chartIsSelected;
             }
         }
 
@@ -716,6 +772,95 @@ namespace WpfSpreadsheetEditorDemo
         #endregion
 
 
+        #region Chart
+
+        private void VisualEditor_ChartTemplatesRequest(object sender, StreamRequestEventArgs e)
+        {
+            e.Stream = DemosResourcesManager.GetResourceAsStream(ChartTemplatesResourceName);
+        }
+
+        private void chartButton_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            ((MenuItem)sender).IsSubmenuOpen = true;
+        }
+
+        /// <summary>
+        /// Handles the Click event of AddChartMenuItem object.
+        /// </summary>
+        private void addChartMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                InsertChartWindow chartWindow = new InsertChartWindow();
+                chartWindow.SetChartDataSource(VisualEditor, ChartTemplatesResourceName);
+                chartWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                chartWindow.Owner = Application.Current.MainWindow;
+                chartWindow.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                DemosTools.ShowWarningMessage("Insert Chart", ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of RemoveChartMenuItem object.
+        /// </summary>
+        private void removeChartMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                VisualEditor.RemoveFocusedDrawing();
+            }
+            catch (Exception ex)
+            {
+                DemosTools.ShowErrorMessage(ex);
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of SwitchRowColumnMenuItem object.
+        /// </summary>
+        private void switchRowColumnMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                VisualEditor.ChartSwitchRowColumn();
+            }
+            catch (Exception ex)
+            {
+                DemosTools.ShowErrorMessage(ex);
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of SelectChartValuesMenuItem object.
+        /// </summary>
+        private void selectChartValuesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                CellReferencesSet chartData = VisualEditor.FocusedDrawing.ChartProperties.GetSeriesValuesReferencesSet();
+                VisualEditor.SetFocusedAndSelectedCells(chartData);
+            }
+            catch (Exception ex)
+            {
+                DemosTools.ShowWarningMessage(ex.Message);
+            }
+            SpreadsheetEditor.Focus();
+        }
+
+        /// <summary>
+        /// Handles the Click event of ChartPropertiesMenuItem object.
+        /// </summary>
+        private void chartPropertiesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            EditDrawing();
+        }
+
+        #endregion
+
+
         #region Image
 
         /// <summary>
@@ -770,23 +915,27 @@ namespace WpfSpreadsheetEditorDemo
             }
         }
 
+
+        /// <summary>
+        /// Handles the MouseDoubleClick event of SpreadsheetEditorControl object.
+        /// </summary>
+        private void SpreadsheetEditorControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && VisualEditor.FocusedDrawing != null)
+            {
+                e.Handled = true;
+                EditDrawing();
+            }
+        }
+
         /// <summary>
         /// Handles the Click event of PicturePropertiesMenuItem object.
         /// </summary>
         private void picturePropertiesMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                DrawingPropertiesWindow window = new DrawingPropertiesWindow(VisualEditor, VisualEditor.FocusedDrawing);
-                window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                window.Owner = Application.Current.MainWindow;
-                window.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                DemosTools.ShowErrorMessage(ex);
-            }
+            EditDrawing();
         }
+
 
         /// <summary>
         /// Handles the Click event of RemovePictureMenuItem object.
@@ -796,6 +945,24 @@ namespace WpfSpreadsheetEditorDemo
             try
             {
                 VisualEditor.RemoveFocusedDrawing();
+            }
+            catch (Exception ex)
+            {
+                DemosTools.ShowErrorMessage(ex);
+            }
+        }
+
+        /// <summary>
+        /// Edits the focused drawing.
+        /// </summary>
+        private void EditDrawing()
+        {
+            try
+            {
+                DrawingPropertiesWindow window = new DrawingPropertiesWindow(VisualEditor, VisualEditor.FocusedDrawing);
+                window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                window.Owner = Application.Current.MainWindow;
+                window.ShowDialog();
             }
             catch (Exception ex)
             {
