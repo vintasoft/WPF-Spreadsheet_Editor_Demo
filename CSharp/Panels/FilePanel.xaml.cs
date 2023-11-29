@@ -85,14 +85,14 @@ namespace WpfSpreadsheetEditorDemo
             _imagePrintManager.PrintScaleMode = Vintasoft.Imaging.Print.PrintScaleMode.BestFit;
             _converter = new DocumentConverter();
 
-            _layoutSettingsManager = new ImageCollectionXlsxLayoutSettingsManager(_converter.Images);            
+            _layoutSettingsManager = new ImageCollectionXlsxLayoutSettingsManager(_converter.Images);
             XlsxDocumentLayoutSettings layoutSettings = new XlsxDocumentLayoutSettings();
             layoutSettings.PageLayoutSettingsType = XlsxPageLayoutSettingsType.UseWorksheetWidth;
             _layoutSettingsManager.LayoutSettings = layoutSettings;
 
-            
-            _openWorksheetFileDialog.Filter = "XLSX files|*.xlsx|XLS files|*.xls|All supported Workbooks|*.xlsx;*.xls";
-            _openWorksheetFileDialog.FilterIndex = 3;
+
+            _openWorksheetFileDialog.Filter = "XLSX files|*.xlsx|XLS files|*.xls|TSV files|*.tsv;*.tab|CSV files|*.csv|All supported Workbooks|*.xlsx;*.xls;*.tsv;*.tab;*.csv";
+            _openWorksheetFileDialog.FilterIndex = 5;
 
             DemosTools.SetTestXlsxFolder(_openWorksheetFileDialog);
 
@@ -100,6 +100,7 @@ namespace WpfSpreadsheetEditorDemo
 
             CodecsFileFilters.SetFilters(_exportFileDialog, false);
 
+            _exportFileDialog.Filter += "|TSV files|*.tsv|CSV files|*.csv";
             // set default filter index to PDF
             string[] filters = _exportFileDialog.Filter.Split('|');
             for (int i = 1; i < filters.Length; i++)
@@ -195,6 +196,42 @@ namespace WpfSpreadsheetEditorDemo
                             filename = _saveWorksheetFileDialog.FileName;
                             // convert XLS file to the XLSX file
                             OpenXmlDocumentConverter.ConvertXlsToXlsx(_openWorksheetFileDialog.FileName, filename);
+                        }
+                        // if file is CSV file
+                        else if (XlsxDecoder.IsCsvFile(filename))
+                        {
+                            if (MessageBox.Show("The loaded file is CSV file. To open CSV file application needs to convert CSV file to the XLSX file. Do you want to create XLSX file from CSV file?", "Convert CSV to XLSX", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                                return true;
+
+                            // create path to an XLSX file
+                            filename = Path.Combine(Path.GetDirectoryName(filename), Path.GetFileNameWithoutExtension(filename) + ".xlsx");
+                            // set file to the save dialog
+                            _saveWorksheetFileDialog.FileName = filename;
+                            // show the save dialog
+                            if (_saveWorksheetFileDialog.ShowDialog() != true)
+                                return true;
+                            // get file path from save dialog
+                            filename = _saveWorksheetFileDialog.FileName;
+                            // convert XLS file to the XLSX file
+                            OpenXmlDocumentConverter.ConvertCsvToXlsx(_openWorksheetFileDialog.FileName, filename);
+                        }
+                        // if file is TSV file
+                        else if (XlsxDecoder.IsTsvFile(filename))
+                        {
+                            if (MessageBox.Show("The loaded file is TSV file. To open TSV file application needs to convert TSV file to the XLSX file. Do you want to create XLSX file from TSV file?", "Convert TSV to XLSX", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                                return true;
+
+                            // create path to an XLSX file
+                            filename = Path.Combine(Path.GetDirectoryName(filename), Path.GetFileNameWithoutExtension(filename) + ".xlsx");
+                            // set file to the save dialog
+                            _saveWorksheetFileDialog.FileName = filename;
+                            // show the save dialog
+                            if (_saveWorksheetFileDialog.ShowDialog() != true)
+                                return true;
+                            // get file path from save dialog
+                            filename = _saveWorksheetFileDialog.FileName;
+                            // convert XLS file to the XLSX file
+                            OpenXmlDocumentConverter.ConvertTsvToXlsx(_openWorksheetFileDialog.FileName, filename);
                         }
 
                         // save information about path to XLSX file
@@ -431,35 +468,69 @@ namespace WpfSpreadsheetEditorDemo
             _exportFileDialog.FileName = Path.GetFileNameWithoutExtension(Filename);
             if (_exportFileDialog.ShowDialog() == true)
             {
-                if (!_isLayoutSettingsInitialized)
-                {
-                    // set layout settings
-                    if (_layoutSettingsManager.EditLayoutSettingsUseDialog(Application.Current.MainWindow))
-                        _isLayoutSettingsInitialized = true;
-                    else
-                        return;
-                }
-
                 try
                 {
-                    // create a temporary stream
-                    using (MemoryStream tempStream = new MemoryStream())
+                    string extension = Path.GetExtension(_exportFileDialog.FileName);
+
+                    if (string.Equals(extension, ".tsv", StringComparison.OrdinalIgnoreCase) ||
+                        string.Equals(extension, ".csv", StringComparison.OrdinalIgnoreCase))
                     {
-                        // save XLSX file to a temporary stream
-                        VisualEditor.SaveDocumentTo(tempStream);
+                        if (MessageBox.Show(
+                            "The selected file type does not support workbooks that contain multiple sheets.\r\nTo save only the active sheet, click OK.\r\nTo save all sheets, save them individually using a different file name for each, or choose a file type that supports multiple sheets.",
+                            "Export document", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                        {
+                            // create a temporary stream
+                            using (MemoryStream tempStream = new MemoryStream())
+                            {
+                                // save XLSX file to a temporary stream
+                                VisualEditor.SaveDocumentTo(tempStream);
 
-                        // add XLSX file to the image collection of document converter
-                        _converter.Images.Add(tempStream);
+                                tempStream.Position = 0;
 
-                        // create dialog that displays progress for document conversion process
-                        ActionProgressWindow dlg = new ActionProgressWindow(ExportDocument, 1, "Export document");
-                        // specify that dialog should be closed when conversion is finished
-                        dlg.CloseAfterComplete = true;
-                        // show dialog and run conversion process
-                        dlg.RunAndShowDialog(Application.Current.MainWindow);
+                                using (Stream stream = File.Create(_exportFileDialog.FileName))
+                                {
+                                    DocumentEnvironmentProperties environmentProperties = DocumentEnvironmentProperties.Default;
+                                    environmentProperties.Culture = CultureInfo.CurrentCulture;
+                                    environmentProperties.UICulture = CultureInfo.CurrentUICulture;
 
-                        // clear image collection of document converter
-                        _converter.Images.ClearAndDisposeItems();
+                                    if (string.Equals(extension, ".tsv", StringComparison.OrdinalIgnoreCase))
+                                        OpenXmlDocumentConverter.ConvertXlsxToTsv(environmentProperties, tempStream, VisualEditor.FocusedWorksheetIndex, stream);
+                                    else
+                                        OpenXmlDocumentConverter.ConvertXlsxToCsv(environmentProperties, tempStream, VisualEditor.FocusedWorksheetIndex, stream, System.Text.Encoding.UTF8);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (!_isLayoutSettingsInitialized)
+                        {
+                            // set layout settings
+                            if (_layoutSettingsManager.EditLayoutSettingsUseDialog(Application.Current.MainWindow))
+                                _isLayoutSettingsInitialized = true;
+                            else
+                                return;
+                        }
+
+                        // create a temporary stream
+                        using (MemoryStream tempStream = new MemoryStream())
+                        {
+                            // save XLSX file to a temporary stream
+                            VisualEditor.SaveDocumentTo(tempStream);
+
+                            // add XLSX file to the image collection of document converter
+                            _converter.Images.Add(tempStream);
+
+                            // create dialog that displays progress for document conversion process
+                            ActionProgressWindow dlg = new ActionProgressWindow(ExportDocument, 1, "Export document");
+                            // specify that dialog should be closed when conversion is finished
+                            dlg.CloseAfterComplete = true;
+                            // show dialog and run conversion process
+                            dlg.RunAndShowDialog(Application.Current.MainWindow);
+
+                            // clear image collection of document converter
+                            _converter.Images.ClearAndDisposeItems();
+                        }
                     }
                 }
                 catch (Exception ex)

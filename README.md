@@ -57,9 +57,9 @@ This C# project uses <a href="https://www.vintasoft.com/vsimaging-dotnet-index.h
    Vintasoft.Imaging.ImagingGlobalSettings.Register("REG_USER", "REG_EMAIL", "EXPIRATION_DATE", "REG_CODE");
    ```
 
-3. Build the project ("SpreadsheetEditorDemo.Net7.csproj" file) in Visual Studio or using .NET CLI:
+3. Build the project ("SpreadsheetEditorDemo.Net8.csproj" file) in Visual Studio or using .NET CLI:
    ```
-   dotnet build SpreadsheetEditorDemo.Net7.csproj
+   dotnet build SpreadsheetEditorDemo.Net8.csproj
    ```
 
 4. Run compiled application and try to view and edit XLSX document.
