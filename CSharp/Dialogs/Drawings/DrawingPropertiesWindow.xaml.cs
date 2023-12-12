@@ -129,6 +129,21 @@ namespace WpfSpreadsheetEditorDemo
                 else
                     categoriesDataRangeTextBox.Text = "";
 
+                if (drawing.ChartProperties.ChartType == ChartType.Line ||
+                    drawing.ChartProperties.ChartType == ChartType.Bar2D ||
+                    drawing.ChartProperties.ChartType == ChartType.Bar3D ||
+                    drawing.ChartProperties.ChartType == ChartType.Axial ||
+                    drawing.ChartProperties.ChartType == ChartType.Scatter)
+                {
+                    categoryAxisTitleTextBox.Text = drawing.ChartProperties.CategoryAxisTitle;
+                    valuesAxisTitleTextBox.Text = drawing.ChartProperties.ValuesAxisTitle;
+                }
+                else
+                {
+                    categoryAxisTitleTextBox.IsEnabled = false;
+                    valuesAxisTitleTextBox.IsEnabled = false;
+                }
+
                 if (drawing.ChartProperties.ChartType == ChartType.Line)
                     smoothLineCheckBox.IsEnabled = true;
                 else
@@ -156,25 +171,6 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         #region UI
-
-        /// <summary>
-        /// Handles the TextChanged event of TitleTextBox object.
-        /// </summary>
-        private void titleTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            if (_isChartPropertiesInitializing)
-                return;
-
-            _visualEditor.StartEditing();
-            try
-            {
-                _visualEditor.ChartTitle = titleTextBox.Text;
-            }
-            finally
-            {
-                _visualEditor.FinishEditing();
-            }
-        }
 
         /// <summary>
         /// Handles the SelectionChanged event of SeriesComboBox object.
@@ -436,6 +432,27 @@ namespace WpfSpreadsheetEditorDemo
                 {
                     _visualEditor.Editor.FinishEditing();
                 }
+
+                if (_drawing.Type == DrawingType.Chart)
+                {
+                    _visualEditor.StartEditing("Set chart properties");
+                    try
+                    {
+                        // set chart title
+                        if (IsTitleChanged(_visualEditor.ChartTitle, titleTextBox.Text))
+                            _visualEditor.ChartTitle = titleTextBox.Text;
+                        // set category axis title
+                        if (categoryAxisTitleTextBox.IsEnabled && IsTitleChanged(_visualEditor.ChartCategoryAxisTitle, categoryAxisTitleTextBox.Text))
+                            _visualEditor.ChartCategoryAxisTitle = categoryAxisTitleTextBox.Text;
+                        // set values axis title
+                        if (valuesAxisTitleTextBox.IsEnabled && IsTitleChanged(_visualEditor.ChartValuesAxisTitle, valuesAxisTitleTextBox.Text))
+                            _visualEditor.ChartValuesAxisTitle = valuesAxisTitleTextBox.Text;
+                    }
+                    finally
+                    {
+                        _visualEditor.FinishEditing();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -464,9 +481,22 @@ namespace WpfSpreadsheetEditorDemo
                 throw new InvalidOperationException("The drawing name cannot be empty.");
         }
 
+        /// <summary>
+        /// Returns a value indicating whether title value is changed.
+        /// </summary>
+        /// <param name="oldValue">Old title value.</param>
+        /// <param name="newValue">New title value.</param>
+        /// <returns>A value indicating whether title value is changed.</returns>
+        private bool IsTitleChanged(string oldValue, string newValue)
+        {
+            // for title, null and empty string are equal values
+            if (string.IsNullOrEmpty(oldValue) && string.IsNullOrEmpty(newValue))
+                return false;
+
+            return oldValue != newValue;
+        }
 
         #endregion
-
 
     }
 }
