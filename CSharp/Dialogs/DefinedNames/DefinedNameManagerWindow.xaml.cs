@@ -73,10 +73,12 @@ namespace WpfSpreadsheetEditorDemo
                 return;
 
             // get the defined name that should be edited
-            DefinedName definedName = (DefinedName)definedNameListView.SelectedItems[0];
+            int definedNameIndex = definedNameListView.Items.IndexOf(definedNameListView.SelectedItems[0]);
 
             // create dialog that allows to edit the defined name
-            EditDefinedNameWindow dlg = new EditDefinedNameWindow(_spreadsheetVisualEditor, definedName);
+            EditDefinedNameWindow dlg = new EditDefinedNameWindow(
+                _spreadsheetVisualEditor, 
+                _spreadsheetVisualEditor.Document.DefinedNames[definedNameIndex]);
             dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             dlg.Owner = this;
             // show the dialog
@@ -97,7 +99,7 @@ namespace WpfSpreadsheetEditorDemo
             // get the defined name that should be deleted
             DefinedName definedName = (DefinedName)definedNameListView.SelectedItems[0];
             // get the index of defined name in defined name list
-            int definedNameIndex = _spreadsheetVisualEditor.Document.DefinedNames.IndexOf(definedName);
+            int definedNameIndex = definedNameListView.Items.IndexOf(definedName);
             // delete defined name by index
             _spreadsheetVisualEditor.Editor.RemoveDefinedNameAt(definedNameIndex);
 
@@ -122,7 +124,11 @@ namespace WpfSpreadsheetEditorDemo
         {
             definedNameListView.Items.Clear();
             foreach (DefinedName definedName in _spreadsheetVisualEditor.Document.DefinedNames)
-                definedNameListView.Items.Add(definedName);
+                definedNameListView.Items.Add(new DefinedName(
+                    definedName.Name,
+                    definedName.WorksheetName,
+                    _spreadsheetVisualEditor.GetActualValueByDefinedName(definedName.Name),
+                    definedName.Comment));
         }
 
         #endregion

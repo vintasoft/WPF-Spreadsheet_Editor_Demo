@@ -108,7 +108,7 @@ namespace WpfSpreadsheetEditorDemo
 
             nameTextBox.Text = definedName.Name;
             commentTextBox.Text = definedName.Comment;
-            refersToTextBox.Text = "=" + definedName.Value;
+            refersToTextBox.Text = "=" + spreadsheetVisualEditor.GetActualValueByDefinedName(definedName.Name);
         }
 
         #endregion
