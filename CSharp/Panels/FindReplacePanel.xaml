@@ -1,19 +1,20 @@
-﻿<local:SpreadsheetVisualEditorPanel x:Class="WpfSpreadsheetEditorDemo.FindReplacePanel"
+﻿<control:SpreadsheetVisualEditorPanel x:Class="WpfSpreadsheetEditorDemo.FindReplacePanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfSpreadsheetEditorDemo"
+             xmlns:control="clr-namespace:Vintasoft.Imaging.Office.Spreadsheet.Wpf.UI.Controls;assembly=Vintasoft.Imaging.Office.OpenXml.Wpf.UI"
              xmlns:vsue="clr-namespace:Vintasoft.Imaging.Wpf.UI.UIElements;assembly=Vintasoft.Imaging.Wpf.UI"
              mc:Ignorable="d" 
              Unloaded="FindReplacePanel_Unloaded"
              Width="Auto" Height="Auto">
-    <local:SpreadsheetVisualEditorPanel.Resources>
+    <control:SpreadsheetVisualEditorPanel.Resources>
         <BitmapImage x:Key="findButtonIcon" UriSource="../Resources/FindContent.png" />
         <BitmapImage x:Key="replaceButtonIcon" UriSource="../Resources/ReplaceContent.png" />
-    </local:SpreadsheetVisualEditorPanel.Resources>
+    </control:SpreadsheetVisualEditorPanel.Resources>
     <StackPanel Orientation="Horizontal">
         <vsue:PanelButtonWithText x:Name="findButton" Click="findButton_Click" Width="60" Text="Find" ToolTip="Find (Ctrl+F)" ImageSource="{StaticResource findButtonIcon}"/>
         <vsue:PanelButtonWithText x:Name="replaceButton" Click="replaceButton_Click" Width="60" Text="Replace" ToolTip="Replace (Ctrl+H)" ImageSource="{StaticResource replaceButtonIcon}"/>
     </StackPanel>
-</local:SpreadsheetVisualEditorPanel>
+</control:SpreadsheetVisualEditorPanel>

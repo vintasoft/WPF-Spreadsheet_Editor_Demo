@@ -76,6 +76,7 @@ namespace WpfSpreadsheetEditorDemo
             _printManager = null;
         }
 
+
         /// <summary>
         /// "Print" button is clicked.
         /// </summary>

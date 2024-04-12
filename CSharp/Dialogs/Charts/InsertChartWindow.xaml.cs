@@ -92,16 +92,26 @@ namespace WpfSpreadsheetEditorDemo
             base.OnClosed(e);
         }
 
+
+        /// <summary>
+        /// Handles the SelectedChartChanged event of ChartPreview object.
+        /// </summary>
         private void ChartPreview_SelectedChartChanged(object sender, EventArgs e)
         {
             okButton.IsEnabled = _chartPreview.IsChartSelected;
         }
 
+        /// <summary>
+        /// Handles the InitializationException event of ChartPreview object.
+        /// </summary>
         private void ChartPreview_InitializationException(object sender, Vintasoft.Imaging.ExceptionEventArgs e)
         {
             DemosTools.ShowErrorMessage(e.Exception);
         }
 
+        /// <summary>
+        /// Handles the InitializationFinished event of ChartPreview object.
+        /// </summary>
         private void ChartPreview_InitializationFinished(object sender, EventArgs e)
         {
             if (_chartPreview.ChartTypes.Count > 0)
@@ -115,7 +125,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of ChartTypeListBox object.
+        /// Handles the SelectionChanged event of chartTypeListBox object.
         /// </summary>
         private void chartTypeListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
@@ -128,7 +138,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of ChartSubtypeListBox object.
+        /// Handles the SelectionChanged event of chartSubtypeListBox object.
         /// </summary>
         private void chartSubtypeListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
@@ -142,7 +152,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of OkButton object.
+        /// Handles the Click event of okButton object.
         /// </summary>
         private void okButton_Click(object sender, EventArgs e)
         {

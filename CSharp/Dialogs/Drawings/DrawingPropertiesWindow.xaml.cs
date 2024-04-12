@@ -173,7 +173,7 @@ namespace WpfSpreadsheetEditorDemo
         #region UI
 
         /// <summary>
-        /// Handles the SelectionChanged event of SeriesComboBox object.
+        /// Handles the SelectionChanged event of seriesComboBox object.
         /// </summary>
         private void seriesComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
@@ -216,7 +216,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of DataPointComboBox object.
+        /// Handles the SelectionChanged event of dataPointComboBox object.
         /// </summary>
         private void dataPointComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
@@ -273,6 +273,9 @@ namespace WpfSpreadsheetEditorDemo
             _isSeriesPropertiesInitializing = false;
         }
 
+        /// <summary>
+        /// Handles the ShapeAppearanceChanged event of dataPointAppearanceEditor object.
+        /// </summary>
         private void dataPointAppearanceEditor_ShapeAppearanceChanged(object sender, EventArgs e)
         {
             if (_isSeriesPropertiesInitializing)
@@ -325,7 +328,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Changed event of MarkerProperties object.
+        /// Handles the Changed event of markerProperties object.
         /// </summary>
         private void markerProperties_Changed(object sender, EventArgs e)
         {
@@ -375,7 +378,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of SmoothLineCheckBox object.
+        /// Handles the CheckedChanged event of smoothLineCheckBox object.
         /// </summary>
         private void smoothLineCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
@@ -398,7 +401,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of OkButton object.
+        /// Handles the Click event of okButton object.
         /// </summary>
         private void okButton_Click(object sender, RoutedEventArgs e)
         {

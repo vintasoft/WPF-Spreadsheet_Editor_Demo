@@ -2,6 +2,7 @@
 
 using Vintasoft.Imaging;
 using Vintasoft.Imaging.Office.Spreadsheet.Wpf.UI;
+using Vintasoft.Imaging.Office.Spreadsheet.Wpf.UI.Controls;
 
 namespace WpfSpreadsheetEditorDemo
 {
@@ -36,7 +37,9 @@ namespace WpfSpreadsheetEditorDemo
 
 
 
-        #region Methods
+        #region Methods  
+
+        #region PUBLIC
 
         /// <summary>
         /// Shows the find dialog.
@@ -54,9 +57,13 @@ namespace WpfSpreadsheetEditorDemo
             ShowFindReplaceForm(true);
         }
 
+        #endregion
+
+
+        #region PROTECTED
 
         /// <summary>
-        /// Raises the <see cref="SpreadsheetEditorChanged" /> event.
+        /// Executes when the spreadsheet editor is changed.
         /// </summary>
         /// <param name="args">The <see cref="PropertyChangedEventArgs{SpreadsheetEditorControl}"/> instance containing the event data.</param>
         protected override void OnSpreadsheetEditorChanged(PropertyChangedEventArgs<WpfSpreadsheetEditorControl> args)
@@ -72,7 +79,14 @@ namespace WpfSpreadsheetEditorDemo
             }
         }
 
+        #endregion
 
+
+        #region PRIVATE
+
+        /// <summary>
+        /// Handles the Unloaded event of FindReplacePanel object.
+        /// </summary>
         private void FindReplacePanel_Unloaded(object sender, RoutedEventArgs e)
         {
             if (_findReplaceWindow != null)
@@ -83,7 +97,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of FindButton object.
+        /// Handles the Click event of findButton object.
         /// </summary>
         private void findButton_Click(object sender, RoutedEventArgs e)
         {
@@ -91,7 +105,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ReplaceButton object.
+        /// Handles the Click event of replaceButton object.
         /// </summary>
         private void replaceButton_Click(object sender, RoutedEventArgs e)
         {
@@ -133,6 +147,8 @@ namespace WpfSpreadsheetEditorDemo
             }
             _findReplaceWindow.Reset();
         }
+
+        #endregion
 
         #endregion
 

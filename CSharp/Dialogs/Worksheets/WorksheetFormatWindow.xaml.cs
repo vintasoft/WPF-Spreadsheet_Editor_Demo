@@ -4,6 +4,7 @@ using System.Windows;
 
 using Vintasoft.Imaging.Office.Spreadsheet.Document;
 using Vintasoft.Imaging.Office.Spreadsheet.UI;
+using Vintasoft.Imaging.Office.Spreadsheet.Wpf.UI.Controls;
 
 using WpfDemosCommonCode;
 
@@ -105,7 +106,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ButtonOk object.
+        /// Handles the Click event of buttonOk object.
         /// </summary>
         private void buttonOk_Click(object sender, RoutedEventArgs e)
         {
@@ -115,11 +116,31 @@ namespace WpfSpreadsheetEditorDemo
                 DemosTools.ShowWarningMessage("Spreadsheet Editor Demo", "Row height must be an integer or decimal number.");
                 return;
             }
+            if (rowHeight > CellsEditorPanel.MAX_ROW_HEIGHT)
+            {
+                DemosTools.ShowWarningMessage("Spreadsheet Editor Demo", $"Row height must be less than or equal {CellsEditorPanel.MAX_ROW_HEIGHT}.");
+                return;
+            }
+            if (rowHeight < 0)
+            {
+                DemosTools.ShowWarningMessage("Spreadsheet Editor Demo", $"Row height must be greater than or equal 0.");
+                return;
+            }
 
             double columnWidth;
             if (!double.TryParse(columnWidthTextBox.Text, NumberStyles.Float, Culture, out columnWidth))
             {
                 DemosTools.ShowWarningMessage("Spreadsheet Editor Demo", "Column width must be an integer or decimal number.");
+                return;
+            }
+            if (columnWidth > CellsEditorPanel.MAX_COLUMN_WIDTH)
+            {
+                DemosTools.ShowWarningMessage("Spreadsheet Editor Demo", $"Column width must be less than or equal {CellsEditorPanel.MAX_COLUMN_WIDTH}.");
+                return;
+            }
+            if (columnWidth < 0)
+            {
+                DemosTools.ShowWarningMessage("Spreadsheet Editor Demo", $"Column width must be greater than or equal 0.");
                 return;
             }
 

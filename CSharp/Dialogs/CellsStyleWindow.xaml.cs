@@ -302,7 +302,7 @@ namespace WpfSpreadsheetEditorDemo
         #region Format tab control
 
         /// <summary>
-        /// Handles the SelectionChanged event of FormatCategoriesTabControl object.
+        /// Handles the SelectionChanged event of formatCategoriesTabControl object.
         /// </summary>
         private void formatCategoriesTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -403,7 +403,7 @@ namespace WpfSpreadsheetEditorDemo
         #region Number tab page
 
         /// <summary>
-        /// Handles the ValueChanged event of NumberDecimalPlacesNumericUpDown object.
+        /// Handles the ValueChanged event of numberDecimalPlacesNumericUpDown object.
         /// </summary>
         private void numberDecimalPlacesNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -416,7 +416,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of UseThousandsSeparatorCheckBox object.
+        /// Handles the CheckedChanged event of useThousandsSeparatorCheckBox object.
         /// </summary>
         private void useThousandsSeparatorCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
@@ -429,7 +429,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of UseRedColorForNegativeCheckBox object.
+        /// Handles the CheckedChanged event of useRedColorForNegativeCheckBox object.
         /// </summary>
         private void useRedColorForNegativeCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
@@ -446,7 +446,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of HideMinusSignCheckBox object.
+        /// Handles the CheckedChanged event of hideMinusSignCheckBox object.
         /// </summary>
         private void hideMinusSignCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
@@ -465,7 +465,7 @@ namespace WpfSpreadsheetEditorDemo
         #region Currency tab page
 
         /// <summary>
-        /// Handles the ValueChanged event of CurrencyDecimalPlacesNumericUpDown object.
+        /// Handles the ValueChanged event of currencyDecimalPlacesNumericUpDown object.
         /// </summary>
         private void currencyDecimalPlacesNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -478,7 +478,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of CurrencySymbolComboBox object.
+        /// Handles the SelectionChanged event of currencySymbolComboBox object.
         /// </summary>
         private void currencySymbolComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -501,7 +501,7 @@ namespace WpfSpreadsheetEditorDemo
         #region Date tab page
 
         /// <summary>
-        /// Handles the SelectionChanged event of DateFormatsListBox object.
+        /// Handles the SelectionChanged event of dateFormatsListBox object.
         /// </summary>
         private void dateFormatsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -524,7 +524,7 @@ namespace WpfSpreadsheetEditorDemo
         #region Time tab page
 
         /// <summary>
-        /// Handles the SelectionChanged event of TimeFormatsListBox object.
+        /// Handles the SelectionChanged event of timeFormatsListBox object.
         /// </summary>
         private void timeFormatsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -547,7 +547,7 @@ namespace WpfSpreadsheetEditorDemo
         #region Percentage tab page
 
         /// <summary>
-        /// Handles the ValueChanged event of PercentageDecimalPlacesNumericUpDown object.
+        /// Handles the ValueChanged event of percentageDecimalPlacesNumericUpDown object.
         /// </summary>
         private void percentageDecimalPlacesNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -565,7 +565,7 @@ namespace WpfSpreadsheetEditorDemo
         #region Scientific tab page
 
         /// <summary>
-        /// Handles the ValueChanged event of ScientificDecimalPlacesNumericUpDown object.
+        /// Handles the ValueChanged event of scientificDecimalPlacesNumericUpDown object.
         /// </summary>
         private void scientificDecimalPlacesNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -583,7 +583,7 @@ namespace WpfSpreadsheetEditorDemo
         #region Custom tab page
 
         /// <summary>
-        /// Handles the SelectionChanged event of CustomFormatsListBox object.
+        /// Handles the SelectionChanged event of customFormatsListBox object.
         /// </summary>
         private void customFormatsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -603,7 +603,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the LostFocus event of CustomFormatTextBox object.
+        /// Handles the LostFocus event of customFormatTextBox object.
         /// </summary>
         private void customFormatTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -614,7 +614,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the PreviewKeyDown event of CustomFormatTextBox object.
+        /// Handles the PreviewKeyDown event of customFormatTextBox object.
         /// </summary>
         private void customFormatTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -703,7 +703,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of TextHorizontalAlignmentComboBox object.
+        /// Handles the SelectionChanged event of textHorizontalAlignmentComboBox object.
         /// </summary>
         private void textHorizontalAlignmentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -727,7 +727,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of TextVerticalAlignmentComboBox object.
+        /// Handles the SelectionChanged event of textVerticalAlignmentComboBox object.
         /// </summary>
         private void textVerticalAlignmentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -743,7 +743,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the ValueChanged event of TextIndentNumericUpDown object.
+        /// Handles the ValueChanged event of textIndentNumericUpDown object.
         /// </summary>
         private void textIndentNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -754,6 +754,9 @@ namespace WpfSpreadsheetEditorDemo
             SetIndentValue();
         }
 
+        /// <summary>
+        /// Handles the CheckStateChanged event of wrapTextCheckBox object.
+        /// </summary>
         private void wrapTextCheckBox_CheckStateChanged(object sender, RoutedEventArgs e)
         {
             if (!_initializationFinished)
@@ -900,7 +903,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of FontNamesListBox object.
+        /// Handles the SelectionChanged event of fontNamesListBox object.
         /// </summary>
         private void fontNamesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -915,7 +918,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the LostFocus event of FontNameTextBox object.
+        /// Handles the LostFocus event of fontNameTextBox object.
         /// </summary>
         private void fontNameTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -925,7 +928,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the PreviewKeyDown event of FontNameTextBox object.
+        /// Handles the PreviewKeyDown event of fontNameTextBox object.
         /// </summary>
         private void fontNameTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -934,7 +937,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of FontStylesListBox object.
+        /// Handles the SelectionChanged event of fontStylesListBox object.
         /// </summary>
         private void fontStylesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -949,7 +952,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the LostFocus event of FontStyleTextBox object.
+        /// Handles the LostFocus event of fontStyleTextBox object.
         /// </summary>
         private void fontStyleTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -959,7 +962,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the PreviewKeyDown event of FontStyleTextBox object.
+        /// Handles the PreviewKeyDown event of fontStyleTextBox object.
         /// </summary>
         private void fontStyleTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -968,7 +971,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of FontSizesListBox object.
+        /// Handles the SelectionChanged event of fontSizesListBox object.
         /// </summary>
         private void fontSizesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -983,7 +986,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the LostFocus event of FontSizeTextBox object.
+        /// Handles the LostFocus event of fontSizeTextBox object.
         /// </summary>
         private void fontSizeTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -993,7 +996,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the PreviewKeyDown event of FontSizeTextBox object.
+        /// Handles the PreviewKeyDown event of fontSizeTextBox object.
         /// </summary>
         private void fontSizeTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -1001,6 +1004,9 @@ namespace WpfSpreadsheetEditorDemo
                 SetFontSizeValue();
         }
 
+        /// <summary>
+        /// Handles the CheckStateChanged event of underlineCheckBox object.
+        /// </summary>
         private void underlineCheckBox_CheckStateChanged(object sender, RoutedEventArgs e)
         {
             if (!_initializationFinished)
@@ -1020,6 +1026,9 @@ namespace WpfSpreadsheetEditorDemo
             }
         }
 
+        /// <summary>
+        /// Handles the CheckStateChanged event of strikethroughCheckBox object.
+        /// </summary>
         private void strikethroughCheckBox_CheckStateChanged(object sender, RoutedEventArgs e)
         {
             if (!_initializationFinished)
@@ -1040,7 +1049,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the ColorChanged event of FontColorPanelControl object.
+        /// Handles the ColorChanged event of fontColorPanelControl object.
         /// </summary>
         private void fontColorPanelControl_ColorChanged(object sender, EventArgs e)
         {
@@ -1051,7 +1060,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of NormalFontButton object.
+        /// Handles the Click event of normalFontButton object.
         /// </summary>
         private void normalFontButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1218,7 +1227,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of NoneBorderPresetButton object.
+        /// Handles the Click event of noneBorderPresetButton object.
         /// </summary>
         private void noneBorderPresetButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1227,7 +1236,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of OutlineBorderPresetButton object.
+        /// Handles the Click event of outlineBorderPresetButton object.
         /// </summary>
         private void outlineBorderPresetButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1237,7 +1246,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of InsideBorderPresetButton object.
+        /// Handles the Click event of insideBorderPresetButton object.
         /// </summary>
         private void insideBorderPresetButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1247,7 +1256,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of TopBorderButton object.
+        /// Handles the Click event of topBorderButton object.
         /// </summary>
         private void topBorderButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1267,7 +1276,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of HorizontalBorderButton object.
+        /// Handles the Click event of horizontalBorderButton object.
         /// </summary>
         private void horizontalBorderButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1281,7 +1290,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of BottomBorderButton object.
+        /// Handles the Click event of bottomBorderButton object.
         /// </summary>
         private void bottomBorderButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1301,7 +1310,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of LeftBorderButton object.
+        /// Handles the Click event of leftBorderButton object.
         /// </summary>
         private void leftBorderButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1321,7 +1330,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of VerticalBorderButton object.
+        /// Handles the Click event of verticalBorderButton object.
         /// </summary>
         private void verticalBorderButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1335,7 +1344,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of RightBorderButton object.
+        /// Handles the Click event of rightBorderButton object.
         /// </summary>
         private void rightBorderButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1433,7 +1442,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the ColorChanged event of BackgroundColorPanelControl object.
+        /// Handles the ColorChanged event of backgroundColorPanelControl object.
         /// </summary>
         private void backgroundColorPanelControl_ColorChanged(object sender, EventArgs e)
         {
@@ -1441,7 +1450,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of NoColorButton object.
+        /// Handles the Click event of noColorButton object.
         /// </summary>
         private void noColorButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1492,7 +1501,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of OkButton object.
+        /// Handles the Click event of okButton object.
         /// </summary>
         private void okButton_Click(object sender, RoutedEventArgs e)
         {

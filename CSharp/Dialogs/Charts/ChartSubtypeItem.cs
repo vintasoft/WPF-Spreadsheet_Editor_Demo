@@ -92,6 +92,9 @@
                 case "100%_Stacked_CurvLineMark":
                     return "100% Stacked Curved Line With Markers";
 
+                case "3D_Line":
+                    return "3D Line";
+
                 case "Pie":
                     return "Pie";
 

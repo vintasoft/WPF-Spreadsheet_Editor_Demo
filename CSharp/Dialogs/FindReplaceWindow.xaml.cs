@@ -169,7 +169,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of CloseButton object.
+        /// Handles the Click event of closeButton object.
         /// </summary>
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -190,7 +190,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of ReplaceCheckBox object.
+        /// Handles the CheckedChanged event of replaceCheckBox object.
         /// </summary>
         private void replaceCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
@@ -198,7 +198,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of FindNextButton object.
+        /// Handles the Click event of findNextButton object.
         /// </summary>
         private void findNextButton_Click(object sender, RoutedEventArgs e)
         {
@@ -206,7 +206,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of AddToSelectionButton object.
+        /// Handles the Click event of addToSelectionButton object.
         /// </summary>
         private void addToSelectionButton_Click(object sender, RoutedEventArgs e)
         {
@@ -214,7 +214,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of FindAllButton object.
+        /// Handles the Click event of findAllButton object.
         /// </summary>
         private void findAllButton_Click(object sender, RoutedEventArgs e)
         {
@@ -232,7 +232,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ReplaceButton object.
+        /// Handles the Click event of replaceButton object.
         /// </summary>
         private void replaceButton_Click(object sender, RoutedEventArgs e)
         {
@@ -257,7 +257,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ReplaceAllButton object.
+        /// Handles the Click event of replaceAllButton object.
         /// </summary>
         private void replaceAllButton_Click(object sender, RoutedEventArgs e)
         {
@@ -289,7 +289,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the TextChanged event of FindWhatComboBox object.
+        /// Handles the TextChanged event of findWhatComboBox object.
         /// </summary>
         private void findWhatComboBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -297,7 +297,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of ResultListView object.
+        /// Handles the SelectionChanged event of resultListView object.
         /// </summary>
         private void resultListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -312,7 +312,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of FindWithinComboBox object.
+        /// Handles the SelectionChanged event of findWithinComboBox object.
         /// </summary>
         private void findWithinComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -320,7 +320,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of SearchComboBox object.
+        /// Handles the SelectionChanged event of searchComboBox object.
         /// </summary>
         private void searchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -328,7 +328,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of LookInComboBox object.
+        /// Handles the SelectionChanged event of lookInComboBox object.
         /// </summary>
         private void lookInComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -344,6 +344,9 @@ namespace WpfSpreadsheetEditorDemo
                 _needReset = true;
         }
 
+        /// <summary>
+        /// Handles the FocusedWorksheetChanged event of visualEditor object.
+        /// </summary>
         private void visualEditor_FocusedWorksheetChanged(object sender, Vintasoft.Imaging.PropertyChangedEventArgs<Worksheet> e)
         {
             if (e.NewValue == null)

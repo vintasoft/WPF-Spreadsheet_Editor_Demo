@@ -118,7 +118,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the TextChanged event of SearchTextBox object.
+        /// Handles the TextChanged event of searchTextBox object.
         /// </summary>
         private void searchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -126,7 +126,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of CategoryComboBox object.
+        /// Handles the SelectionChanged event of categoryComboBox object.
         /// </summary>
         private void categoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -134,7 +134,7 @@ namespace WpfSpreadsheetEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ButtonOk object.
+        /// Handles the Click event of buttonOk object.
         /// </summary>
         private void buttonOk_Click(object sender, RoutedEventArgs e)
         {

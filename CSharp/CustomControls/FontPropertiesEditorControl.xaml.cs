@@ -259,7 +259,7 @@ namespace WpfSpreadsheetEditorDemo.CustomControls
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of FontNamesListBox object.
+        /// Handles the SelectionChanged event of fontNamesListBox object.
         /// </summary>
         private void fontNamesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -268,7 +268,7 @@ namespace WpfSpreadsheetEditorDemo.CustomControls
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of FontStylesListBox object.
+        /// Handles the SelectionChanged event of fontStylesListBox object.
         /// </summary>
         private void fontStylesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -277,7 +277,7 @@ namespace WpfSpreadsheetEditorDemo.CustomControls
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of FontSizesListBox object.
+        /// Handles the SelectionChanged event of fontSizesListBox object.
         /// </summary>
         private void fontSizesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -286,7 +286,7 @@ namespace WpfSpreadsheetEditorDemo.CustomControls
         }
 
         /// <summary>
-        /// Handles the Click event of NormalFontButton object.
+        /// Handles the Click event of normalFontButton object.
         /// </summary>
         private void normalFontButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
