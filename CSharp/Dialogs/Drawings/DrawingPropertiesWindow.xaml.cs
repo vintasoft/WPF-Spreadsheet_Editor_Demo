@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 
 using Vintasoft.Imaging.Office.Spreadsheet.Document;
@@ -26,6 +27,11 @@ namespace WpfSpreadsheetEditorDemo
         /// The drawing.
         /// </summary>
         SheetDrawing _drawing;
+
+        /// <summary> 
+        /// The chart series.
+        /// </summary>
+        List<ChartDataSeries> _series = new List<ChartDataSeries>();
 
         /// <summary>
         /// The chart series, which are selected in combobox.
@@ -57,7 +63,7 @@ namespace WpfSpreadsheetEditorDemo
 
             // done separately to not trigger event during initialization
             markerSizeNumericUpDown.ValueChanged += markerProperties_Changed;
-        } 
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DrawingPropertiesWindow"/> class.
@@ -117,8 +123,17 @@ namespace WpfSpreadsheetEditorDemo
                 // init series comboBox
                 if (drawing.ChartProperties.Series.Count > 0)
                 {
+                    int seriesIndex = 0;
                     for (int i = 0; i < drawing.ChartProperties.Series.Count; i++)
-                        seriesComboBox.Items.Add(string.Format("Series {0}", i + 1));
+                    {
+                        if (drawing.ChartProperties.Series[i].SeriesType == ChartDataSeriesType.DataSeries)
+                        {
+                            seriesComboBox.Items.Add(string.Format("Series {0}", seriesIndex + 1));
+                            seriesIndex++;
+
+                            _series.Add(drawing.ChartProperties.Series[i]);
+                        }
+                    }
 
                     seriesComboBox.SelectedIndex = 0;
                 }
@@ -180,7 +195,7 @@ namespace WpfSpreadsheetEditorDemo
             _isSeriesPropertiesInitializing = true;
 
             // get selected series
-            _selectedSeries = _drawing.ChartProperties.Series[seriesComboBox.SelectedIndex];
+            _selectedSeries = _series[seriesComboBox.SelectedIndex];
 
             // set the selected series properties to the UI
             if (_selectedSeries.Name != null)
@@ -211,7 +226,7 @@ namespace WpfSpreadsheetEditorDemo
             smoothLineCheckBox.IsChecked = _selectedSeries.SmoothLine;
 
             _isSeriesPropertiesInitializing = false;
-            
+
             dataPointComboBox.SelectedIndex = 0;
         }
 

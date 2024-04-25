@@ -122,6 +122,21 @@
                 case "100%_Stacked_Area":
                     return "100% Stacked Area";
 
+                case "Scatter":
+                    return "Scatter";
+
+                case "Smooth_Lines_And_Marker":
+                    return "Smooth Lines And Markers";
+
+                case "Smooth_Lines":
+                    return "Smooth Lines";
+
+                case "Straight_Lines_And_Mark":
+                    return "Straight Lines and Markers";
+
+                case "Straight_Lines":
+                    return "Straight Lines";
+
                 default:
                     return Value;
             }
