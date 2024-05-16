@@ -47,14 +47,17 @@
                 case "100%_Stacked_Column":
                     return "100% Stacked Column";
 
+                case "3D_Column":
+                    return "3-D Column";
+
                 case "3D_Clustered_Column":
-                    return "3D Clustered Column";
+                    return "3-D Clustered Column";
 
                 case "3D_Stacked_Column":
-                    return "3D Stacked Column";
+                    return "3-D Stacked Column";
 
                 case "3D_100%_Stacked_Column":
-                    return "3D 100% Stacked Column";
+                    return "3-D 100% Stacked Column";
 
                 case "Line":
                     return "Line";
@@ -66,13 +69,13 @@
                     return "100% Stacked Line";
 
                 case "Line_With_Markers":
-                    return "Line With Markers";
+                    return "Line with Markers";
 
                 case "Stacked_Line_With_Markers":
-                    return "Stacked Line With Markers";
+                    return "Stacked Line with Markers";
 
                 case "100%_Stacked_Line_With_Mar":
-                    return "100% Stacked Line With Markers";
+                    return "100% Stacked Line with Markers";
 
                 case "Curved_Line":
                     return "Curved Line";
@@ -84,16 +87,16 @@
                     return "100% Stacked Curved Line";
 
                 case "Curved_Line_With_Markers":
-                    return "Curved Line With Markers";
+                    return "Curved Line with Markers";
 
                 case "Stacked_CurvLine_With_Mark":
-                    return "Stacked Curved Line With Markers";
+                    return "Stacked Curved Line with Markers";
 
                 case "100%_Stacked_CurvLineMark":
-                    return "100% Stacked Curved Line With Markers";
+                    return "100% Stacked Curved Line with Markers";
 
                 case "3D_Line":
-                    return "3D Line";
+                    return "3-D Line";
 
                 case "Pie":
                     return "Pie";
@@ -113,6 +116,15 @@
                 case "100%_Stacked_Bar":
                     return "100% Stacked Bar";
 
+                case "3D_Clustered_Bar":
+                    return "3-D Clustered Bar";
+
+                case "3D_Stacked_Bar":
+                    return "Stacked Bar";
+
+                case "3D_100%_Stacked_Bar":
+                    return "3-D 100% Stacked Bar";
+
                 case "Area":
                     return "Area";
 
@@ -122,20 +134,50 @@
                 case "100%_Stacked_Area":
                     return "100% Stacked Area";
 
+                case "3D_Area":
+                    return "3-D Area";
+
+                case "3D_Stacked_Area":
+                    return "Stacked Area";
+
+                case "3D_100%_Stacked_Area":
+                    return "3-D 100% Stacked Area";
+
+                case "High_Low_Close":
+                    return "High-Low-Close";
+
+                case "Open_High_Low_Close":
+                    return "Open-High-Low-Close";
+
                 case "Scatter":
                     return "Scatter";
 
-                case "Smooth_Lines_And_Marker":
-                    return "Smooth Lines And Markers";
+                case "Scatter_SmoothAndMarker":
+                    return "Scatter with Smooth Lines and Markers";
 
-                case "Smooth_Lines":
-                    return "Smooth Lines";
+                case "Scatter_Smooth_Lines":
+                    return "Scatter with Smooth Lines";
 
-                case "Straight_Lines_And_Mark":
-                    return "Straight Lines and Markers";
+                case "Scatter_StraightAndMark":
+                    return "Scatter with Straight Lines and Markers";
 
-                case "Straight_Lines":
-                    return "Straight Lines";
+                case "Scatter_Straight_Lines":
+                    return "Scatter with Straight Lines";
+
+                case "Bubble":
+                    return "Bubble";
+
+                case "3D_Bubble":
+                    return "3-D Bubble";
+
+                case "Radar":
+                    return "Radar";
+
+                case "Radar_with_Markers":
+                    return "Radar with Markers";
+
+                case "Filled_Radar":
+                    return "Filled Radar";
 
                 default:
                     return Value;

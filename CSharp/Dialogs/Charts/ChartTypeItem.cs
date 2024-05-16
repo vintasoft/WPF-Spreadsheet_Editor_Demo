@@ -53,6 +53,15 @@
                 case "Area":
                     return "Area";
 
+                case "Stock":
+                    return "Stock";
+
+                case "Scatter":
+                    return "Scatter";
+
+                case "Radar":
+                    return "Radar";
+
                 default:
                     return Value;
             }
