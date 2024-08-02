@@ -28,7 +28,7 @@ namespace WpfSpreadsheetEditorDemo
         /// </summary>
         SheetDrawing _drawing;
 
-        /// <summary> 
+        /// <summary>
         /// The chart series.
         /// </summary>
         List<ChartDataSeries> _series = new List<ChartDataSeries>();

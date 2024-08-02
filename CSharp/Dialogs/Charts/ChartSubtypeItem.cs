@@ -104,6 +104,12 @@
                 case "Pie_Explosion":
                     return "Pie (Explosion)";
 
+                case "3D_Pie":
+                    return "3-D Pie";
+
+                case "3D_Pie_Explosion":
+                    return "3-D Pie (Explosion)";
+
                 case "Doughnut":
                     return "Doughnut";
 
@@ -178,6 +184,12 @@
 
                 case "Filled_Radar":
                     return "Filled Radar";
+
+                case "3D_Surface":
+                    return "3-D Surface";
+
+                case "3D_Surface_Wireframe":
+                    return "Wireframe 3-D Surface";
 
                 default:
                     return Value;
