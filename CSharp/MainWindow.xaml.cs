@@ -177,8 +177,8 @@ namespace WpfSpreadsheetEditorDemo
             _layoutSettingsManager.LayoutSettings = layoutSettings;
 
 
-            _openWorksheetFileDialog.Filter = "XLSX files|*.xlsx|XLS files|*.xls|TSV files|*.tsv;*.tab|CSV files|*.csv|All supported Workbooks|*.xlsx;*.xls;*.tsv;*.tab;*.csv";
-            _openWorksheetFileDialog.FilterIndex = 5;
+            _openWorksheetFileDialog.Filter = "XLSX files|*.xlsx|XLS files|*.xls|TSV files|*.tsv;*.tab|CSV files|*.csv|ODS Files|*.ods|All supported Workbooks|*.xlsx;*.xls;*.tsv;*.tab;*.csv;*.ods";
+            _openWorksheetFileDialog.FilterIndex = 6;
 
             DemosTools.SetTestXlsxFolder(_openWorksheetFileDialog);
 
@@ -1256,6 +1256,24 @@ namespace WpfSpreadsheetEditorDemo
                     filename = _saveWorksheetFileDialog.FileName;
                     // convert XLS file to the XLSX file
                     OpenXmlDocumentConverter.ConvertTsvToXlsx(_openWorksheetFileDialog.FileName, filename);
+                }
+                // if file is ODS file
+                else if (XlsxDecoder.IsOdsDocument(filename))
+                {
+                    if (MessageBox.Show("The loaded file is ODS file. To open ODS file application needs to convert ODS file to the XLSX file. Do you want to create XLSX file from ODS file?", "Convert ODS to XLSX", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                        return;
+
+                    // create path to an XLSX file
+                    filename = Path.Combine(Path.GetDirectoryName(filename), Path.GetFileNameWithoutExtension(filename) + ".xlsx");
+                    // set file to the save dialog
+                    _saveWorksheetFileDialog.FileName = filename;
+                    // show the save dialog
+                    if (_saveWorksheetFileDialog.ShowDialog() != true)
+                        return;
+                    // get file path from save dialog
+                    filename = _saveWorksheetFileDialog.FileName;
+                    // convert ODS file to the XLSX file
+                    OpenXmlDocumentConverter.ConvertOdsToXlsx(_openWorksheetFileDialog.FileName, filename);
                 }
                 // if file is encrypted XLSX file
                 else if (Path.GetExtension(filename).ToUpperInvariant() == ".XLSX" && OfficeDocumentCryptography.IsSecuredOfficeDocument(filename))
