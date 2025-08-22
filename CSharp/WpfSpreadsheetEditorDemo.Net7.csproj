@@ -13,7 +13,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>    
     <EnableDefaultItems>false</EnableDefaultItems>
-    <Version>14.1.8.1</Version>
+    <Version>14.1.9.1</Version>
     <AssemblyName>WpfSpreadsheetEditorDemo</AssemblyName>
     <RootNamespace>WpfSpreadsheetEditorDemo</RootNamespace>
     <StartupObject>WpfSpreadsheetEditorDemo.App</StartupObject>
@@ -36,15 +36,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Vintasoft.Imaging" Version="14.1.8.1" />
-    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="14.1.8.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="6.1.8.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="6.1.8.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="6.1.8.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="11.1.8.1" />
-    <PackageReference Include="Vintasoft.Imaging.UI" Version="14.1.8.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="14.1.8.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="14.1.8.1" />
+    <PackageReference Include="Vintasoft.Imaging" Version="14.1.9.1" />
+    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="14.1.9.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="6.1.9.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="6.1.9.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="6.1.9.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="11.1.9.1" />
+    <PackageReference Include="Vintasoft.Imaging.UI" Version="14.1.9.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="14.1.9.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="14.1.9.1" />
     <PackageReference Include="Vintasoft.Shared" Version="4.5.0.1" />
   </ItemGroup>
   <ItemGroup>
