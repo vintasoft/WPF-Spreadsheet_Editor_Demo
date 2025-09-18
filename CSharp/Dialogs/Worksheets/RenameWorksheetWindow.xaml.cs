@@ -71,9 +71,9 @@ namespace WpfSpreadsheetEditorDemo
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
             string worksheetName = worksheetNameTextBox.Text;
-            if (worksheetName.Length > 40)
+            if (worksheetName.Length > 31)
             {
-                DemosTools.ShowWarningMessage("Spreadsheet Editor Demo", "Worksheet name cannot contains more than 40 symbols.");
+                DemosTools.ShowWarningMessage("Spreadsheet Editor Demo", "Worksheet name cannot contains more than 31 symbols.");
                 return;
             }
 
