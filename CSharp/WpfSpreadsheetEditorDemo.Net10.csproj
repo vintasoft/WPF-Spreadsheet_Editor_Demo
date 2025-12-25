@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
@@ -13,7 +13,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>    
     <EnableDefaultItems>false</EnableDefaultItems>
-    <Version>14.1.21.1</Version>
+    <Version>15.0.0.1</Version>
     <AssemblyName>WpfSpreadsheetEditorDemo</AssemblyName>
     <RootNamespace>WpfSpreadsheetEditorDemo</RootNamespace>
     <StartupObject>WpfSpreadsheetEditorDemo.App</StartupObject>
@@ -31,20 +31,20 @@
   </PropertyGroup>  
 
   <ItemGroup>
-    <PackageReference Include="System.IO.Packaging" Version="7.0.0" />
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
+    <PackageReference Include="System.IO.Packaging" Version="10.0.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="10.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Vintasoft.Imaging" Version="14.1.21.1" />
-    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="14.1.21.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="6.1.21.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="6.1.21.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="6.1.21.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="11.1.21.1" />
-    <PackageReference Include="Vintasoft.Imaging.UI" Version="14.1.21.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="14.1.21.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="14.1.21.1" />
+    <PackageReference Include="Vintasoft.Imaging" Version="15.0.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.0.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.0.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="7.0.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="7.0.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.0.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.0.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="15.0.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="15.0.0.1" />
     <PackageReference Include="Vintasoft.Shared" Version="4.6.1.1" />
   </ItemGroup>
   <ItemGroup>

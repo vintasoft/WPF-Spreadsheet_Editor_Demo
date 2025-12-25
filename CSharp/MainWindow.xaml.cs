@@ -16,6 +16,7 @@ using Vintasoft.Imaging.Office.Spreadsheet;
 using Vintasoft.Imaging.Office.Spreadsheet.Document;
 using Vintasoft.Imaging.Office.Spreadsheet.UI;
 using Vintasoft.Imaging.Office.Spreadsheet.Wpf.UI.Controls;
+using Vintasoft.Imaging.Office.Wpf.UI;
 using Vintasoft.Imaging.Wpf;
 using Vintasoft.Imaging.Wpf.Print;
 
