@@ -1,4 +1,4 @@
-# VintaSoft WPF Spreadsheet Editor Demo
+﻿# VintaSoft WPF Spreadsheet Editor Demo
 
 This C# project uses <a href="https://www.vintasoft.com/vsimaging-dotnet-index.html">VintaSoft Imaging .NET SDK</a> and demonstrates how to view and edit XLSX document in WPF:
 * Create a new or open an existing XLSX document in spreadsheet editor control
@@ -57,9 +57,9 @@ This C# project uses <a href="https://www.vintasoft.com/vsimaging-dotnet-index.h
    Vintasoft.Imaging.ImagingGlobalSettings.Register("REG_USER", "REG_EMAIL", "EXPIRATION_DATE", "REG_CODE");
    ```
 
-3. Build the project ("SpreadsheetEditorDemo.Net8.csproj" file) in Visual Studio or using .NET CLI:
+3. Build the project ("SpreadsheetEditorDemo.Net10.csproj" file) in Visual Studio or using .NET CLI:
    ```
-   dotnet build SpreadsheetEditorDemo.Net8.csproj
+   dotnet build SpreadsheetEditorDemo.Net10.csproj
    ```
 
 4. Run compiled application and try to view and edit XLSX document.
