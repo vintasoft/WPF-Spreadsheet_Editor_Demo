@@ -89,15 +89,15 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <PackageReference Include="Vintasoft.Imaging" Version="15.0.4.1" />
-    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.0.4.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.0.4.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="7.0.4.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="7.0.4.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.0.4.1" />
-    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.0.4.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="15.0.4.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="15.0.4.1" />
+    <PackageReference Include="Vintasoft.Imaging" Version="15.0.5.1" />
+    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.0.5.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.0.5.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="7.0.5.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="7.0.5.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.0.5.1" />
+    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.0.5.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="15.0.5.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="15.0.5.1" />
     <PackageReference Include="Vintasoft.Shared" Version="4.6.1.1" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
