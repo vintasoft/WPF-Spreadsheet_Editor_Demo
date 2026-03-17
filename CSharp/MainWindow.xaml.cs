@@ -20,10 +20,10 @@ using Vintasoft.Imaging.Office.Wpf.UI;
 using Vintasoft.Imaging.Wpf;
 using Vintasoft.Imaging.Wpf.Print;
 
-using WpfDemosCommonCode;
-using WpfDemosCommonCode.CustomControls;
-using WpfDemosCommonCode.Imaging;
-using WpfDemosCommonCode.Imaging.Codecs;
+using WpfCommonCode;
+using WpfCommonCode.CustomControls;
+using WpfCommonCode.Imaging;
+using WpfCommonCode.Imaging.Codecs;
 
 namespace WpfSpreadsheetEditorDemo
 {

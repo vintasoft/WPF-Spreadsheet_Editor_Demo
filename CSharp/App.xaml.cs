@@ -1,4 +1,4 @@
-using System.Windows;
+﻿using System.Windows;
 
 namespace WpfSpreadsheetEditorDemo
 {
@@ -13,7 +13,7 @@ namespace WpfSpreadsheetEditorDemo
         public App()
             : base()
         {
-            WpfDemosCommonCode.DemosTools.EnableLicenseExceptionDisplaying();
+            WpfCommonCode.DemosTools.EnableLicenseExceptionDisplaying();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Windows;
 
 using Vintasoft.Imaging.Office.Spreadsheet.Document;
 using Vintasoft.Imaging.Office.Spreadsheet.UI;
-using WpfDemosCommonCode;
+using WpfCommonCode;
 
 namespace WpfSpreadsheetEditorDemo
 {

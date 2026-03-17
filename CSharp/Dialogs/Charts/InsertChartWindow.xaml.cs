@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 
-using WpfDemosCommonCode;
+using WpfCommonCode;
 
 using Vintasoft.Imaging.Office.Spreadsheet;
 using Vintasoft.Imaging.Office.Spreadsheet.UI;
@@ -67,7 +67,7 @@ namespace WpfSpreadsheetEditorDemo
             _chartPreview.InitializationFinished += ChartPreview_InitializationFinished;
             _chartPreview.ChartPreview = chartViewer.VisualEditor;
 
-            using (Stream chartSourceStream = WpfDemosCommonCode.DemosResourcesManager.GetResourceAsStream(chartSourceResourceName))
+            using (Stream chartSourceStream = WpfCommonCode.DemosResourcesManager.GetResourceAsStream(chartSourceResourceName))
             {
                 byte[] data = new byte[(int)chartSourceStream.Length];
                 chartSourceStream.Read(data, 0, data.Length);

@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using Vintasoft.Imaging;
 using Vintasoft.Imaging.Wpf.Print;
 
-using WpfDemosCommonCode.Imaging;
+using WpfCommonCode.Imaging;
 
 namespace WpfSpreadsheetEditorDemo
 {

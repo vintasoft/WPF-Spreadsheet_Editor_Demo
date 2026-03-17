@@ -6,7 +6,7 @@ using Vintasoft.Imaging.Office.Spreadsheet.Document;
 using Vintasoft.Imaging.Office.Spreadsheet.UI;
 using Vintasoft.Imaging.Wpf;
 using Vintasoft.Primitives;
-using WpfDemosCommonCode;
+using WpfCommonCode;
 
 namespace WpfSpreadsheetEditorDemo
 {

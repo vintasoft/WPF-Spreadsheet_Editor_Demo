@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-using WpfDemosCommonCode;
+using WpfCommonCode;
 
 namespace WpfSpreadsheetEditorDemo
 {
