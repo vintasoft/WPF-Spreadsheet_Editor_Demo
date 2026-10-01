@@ -82,11 +82,6 @@ namespace WpfSpreadsheetEditorDemo
         DocumentConverter _documentConverter;
 
         /// <summary> 
-        /// The layout settings manager.
-        /// </summary>
-        ImageCollectionXlsxLayoutSettingsManager _layoutSettingsManager;
-
-        /// <summary> 
         /// A value indicating whether the layout settings are initialized.
         /// </summary>
         bool _isLayoutSettingsInitialized = false;
@@ -172,10 +167,9 @@ namespace WpfSpreadsheetEditorDemo
             _imagePrintManager.PrintScaleMode = Vintasoft.Imaging.Print.PrintScaleMode.BestFit;
             _documentConverter = new DocumentConverter();
 
-            _layoutSettingsManager = new ImageCollectionXlsxLayoutSettingsManager(_documentConverter.Images);
             XlsxDocumentLayoutSettings layoutSettings = new XlsxDocumentLayoutSettings();
             layoutSettings.PageLayoutSettingsType = XlsxPageLayoutSettingsType.UseWorksheetWidth;
-            _layoutSettingsManager.LayoutSettings = layoutSettings;
+            _documentConverter.Images.LayoutSettings.SetSettings(layoutSettings);
 
 
             _openWorksheetFileDialog.Filter = "XLSX files|*.xlsx|XLS files|*.xls|TSV files|*.tsv;*.tab|CSV files|*.csv|ODS Files|*.ods|All supported Workbooks|*.xlsx;*.xls;*.tsv;*.tab;*.csv;*.ods";
@@ -1404,7 +1398,8 @@ namespace WpfSpreadsheetEditorDemo
         /// </summary>
         private void FilePanel_ShowPrintLayoutSettings(object sender, EventArgs e)
         {
-            if (_layoutSettingsManager.EditLayoutSettingsUseDialog(Application.Current.MainWindow))
+            XlsxLayoutSettingsDialog dialog = new XlsxLayoutSettingsDialog(_documentConverter.Images);
+            if (dialog.ShowDialog() == true)
                 _isLayoutSettingsInitialized = true;
         }
 
@@ -1437,7 +1432,8 @@ namespace WpfSpreadsheetEditorDemo
                 if (!_isLayoutSettingsInitialized)
                 {
                     // set layout settings
-                    if (_layoutSettingsManager.EditLayoutSettingsUseDialog(Application.Current.MainWindow))
+                    XlsxLayoutSettingsDialog dialog = new XlsxLayoutSettingsDialog(_documentConverter.Images);
+                    if (dialog.ShowDialog() == true)
                         _isLayoutSettingsInitialized = true;
                     else
                         return;
@@ -1450,7 +1446,7 @@ namespace WpfSpreadsheetEditorDemo
                     VisualEditor.SaveDocumentTo(tempStream);
 
                     // create a dialog that allows to preview and print XLSX document
-                    PrintPreviewWindow window = new PrintPreviewWindow(tempStream);
+                    PrintPreviewWindow window = new PrintPreviewWindow(tempStream, _documentConverter.Images.LayoutSettings);
                     window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                     window.Owner = Application.Current.MainWindow;
                     // show the dialog
@@ -1532,7 +1528,8 @@ namespace WpfSpreadsheetEditorDemo
                 if (!_isLayoutSettingsInitialized)
                 {
                     // set layout settings
-                    if (_layoutSettingsManager.EditLayoutSettingsUseDialog(Application.Current.MainWindow))
+                    XlsxLayoutSettingsDialog dialog = new XlsxLayoutSettingsDialog(_documentConverter.Images);
+                    if (dialog.ShowDialog() == true)
                         _isLayoutSettingsInitialized = true;
                     else
                         return true;
@@ -1546,6 +1543,7 @@ namespace WpfSpreadsheetEditorDemo
 
                     using (ImageCollection images = new ImageCollection())
                     {
+                        _documentConverter.Images.LayoutSettings.CopyTo(images.LayoutSettings);
                         images.Add(tempStream);
                         try
                         {
@@ -1595,7 +1593,8 @@ namespace WpfSpreadsheetEditorDemo
             if (!_isLayoutSettingsInitialized)
             {
                 // set layout settings
-                if (_layoutSettingsManager.EditLayoutSettingsUseDialog(Application.Current.MainWindow))
+                XlsxLayoutSettingsDialog dialog = new XlsxLayoutSettingsDialog(_documentConverter.Images);
+                if (dialog.ShowDialog() == true)
                     _isLayoutSettingsInitialized = true;
                 else
                     return false;

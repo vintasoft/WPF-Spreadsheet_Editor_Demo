@@ -7,12 +7,10 @@ using System.Windows.Controls;
 using Vintasoft.Imaging;
 using Vintasoft.Imaging.Wpf.Print;
 
-using WpfCommonCode.Imaging;
-
-namespace WpfSpreadsheetEditorDemo
+namespace WpfCommonCode.Imaging
 {
     /// <summary>
-    /// A window that allows to preview and print XLSX document.
+    /// A window that allows to preview and print DOCX document.
     /// </summary>
     public partial class PrintPreviewWindow : Window
     {
@@ -34,7 +32,8 @@ namespace WpfSpreadsheetEditorDemo
         /// Initializes a new instance of the <see cref="PrintPreviewWindow"/> class.
         /// </summary>
         /// <param name="fileStream">A stream that contains XLSX file.</param>
-        public PrintPreviewWindow(Stream fileStream)
+        /// <param name="layoutSettingsManager">The document layout manager.</param>
+        public PrintPreviewWindow(Stream fileStream, ImageCollectionLayoutSettingsManager layoutSettingsManager)
         {
             if (fileStream == null)
                 throw new ArgumentNullException("fileStream");
@@ -43,6 +42,7 @@ namespace WpfSpreadsheetEditorDemo
 
             _printManager = new WpfImagePrintManager();
             _printManager.Images = new ImageCollection();
+            layoutSettingsManager.CopyTo(_printManager.Images.LayoutSettings);
             _printManager.Images.Add(fileStream);
             _printManager.Preview = printPreviewControl1;
             _printManager.Preview.InputBindings.Clear();
@@ -91,8 +91,9 @@ namespace WpfSpreadsheetEditorDemo
                 imagePrintManager.PrintDialog.MaxPage = (uint)_printManager.Images.Count;
 
                 if (imagePrintManager.PrintDialog.ShowDialog() == true)
-                    // print XLSX document
-                    imagePrintManager.Print("XLSX document");
+                {
+                    imagePrintManager.Print("Print document");
+                }
             }
         }
 
@@ -101,7 +102,8 @@ namespace WpfSpreadsheetEditorDemo
         /// </summary>
         private void pageSettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            PageSettingsWindow pageSettingsWindow = new PageSettingsWindow(
+            WpfCommonCode.Imaging.PageSettingsWindow pageSettingsWindow = 
+                new WpfCommonCode.Imaging.PageSettingsWindow(
                 _printManager, _printManager.PagePadding, _printManager.ImagePadding);
             pageSettingsWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             pageSettingsWindow.Owner = Application.Current.MainWindow;

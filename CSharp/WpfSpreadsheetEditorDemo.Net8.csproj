@@ -13,7 +13,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>    
     <EnableDefaultItems>false</EnableDefaultItems>
-    <Version>15.1.9.1</Version>
+    <Version>15.2.0.1</Version>
     <AssemblyName>WpfSpreadsheetEditorDemo</AssemblyName>
     <RootNamespace>WpfSpreadsheetEditorDemo</RootNamespace>
     <StartupObject>WpfSpreadsheetEditorDemo.App</StartupObject>
@@ -36,16 +36,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Vintasoft.Imaging" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="7.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="7.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Shared" Version="4.6.3.1" />
+    <PackageReference Include="Vintasoft.Imaging" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="7.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="7.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Shared" Version="4.7.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -76,15 +76,6 @@
     <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\DocumentLayoutSettingsEditorControl.xaml.cs">
       <DependentUpon>DocumentLayoutSettingsEditorControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\DocxLayoutSettingsDialog.xaml.cs">
-      <DependentUpon>DocxLayoutSettingsDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\ImageCollectionDocxLayoutSettingsManager.cs">
-    </Compile>
-    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\ImageCollectionLayoutSettingsManager.cs">
-    </Compile>
-    <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\ImageCollectionXlsxLayoutSettingsManager.cs">
-    </Compile>
     <Compile Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\PageLayoutSettingsControl.xaml.cs">
       <DependentUpon>PageLayoutSettingsControl.xaml</DependentUpon>
     </Compile>
@@ -101,6 +92,9 @@
     </Compile>
     <Compile Include="WpfDemosCommonCode.Imaging\PageSettingsWindow.xaml.cs">
       <DependentUpon>PageSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Print\PrintPreviewWindow.xaml.cs">
+      <DependentUpon>PrintPreviewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WpfDemosCommonCode\WpfAboutBoxBaseWindow.xaml.cs">
       <DependentUpon>WpfAboutBoxBaseWindow.xaml</DependentUpon>
@@ -134,10 +128,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\DocxLayoutSettingsDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="WpfDemosCommonCode.Imaging\DocumentLayoutSettings\PageLayoutSettingsControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -155,6 +145,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="WpfDemosCommonCode.Imaging\PageSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Print\PrintPreviewWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -230,9 +224,6 @@
     </Compile>
     <Compile Include="Dialogs\OptionsWindow.xaml.cs">
       <DependentUpon>OptionsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\Print\PrintPreviewWindow.xaml.cs">
-      <DependentUpon>PrintPreviewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\SelectFunctionWindow.xaml.cs">
       <DependentUpon>SelectFunctionWindow.xaml</DependentUpon>
@@ -341,10 +332,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\OptionsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialogs\Print\PrintPreviewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
