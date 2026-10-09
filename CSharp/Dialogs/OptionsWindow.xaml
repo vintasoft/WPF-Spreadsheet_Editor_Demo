@@ -35,24 +35,24 @@
 
             <Label Grid.Row="0" Grid.Column="0" Content="Culture (number formats, date formats)"/>
             <ComboBox x:Name="cultureComboBox" Grid.Row="0" Grid.Column="1" IsEditable="True">
-                <ComboBoxItem Content="en-US"/>
-                <ComboBoxItem Content="ru-RU"/>
                 <ComboBoxItem Content="de-DE"/>
+                <ComboBoxItem Content="en-US"/>
                 <ComboBoxItem Content="es-ES"/>
                 <ComboBoxItem Content="fr-FR"/>
                 <ComboBoxItem Content="it-IT"/>
                 <ComboBoxItem Content="pt-PT"/>
+                <ComboBoxItem Content="ru-RU"/>
             </ComboBox>
 
             <Label Grid.Row="1" Grid.Column="0" Content="UI Culture (function names, error names and constants)"/>
             <ComboBox x:Name="uiCultureComboBox" Grid.Row="1" Grid.Column="1" IsEditable="True">
-                <ComboBoxItem Content="en-US"/>
-                <ComboBoxItem Content="ru-RU"/>
                 <ComboBoxItem Content="de-DE"/>
+                <ComboBoxItem Content="en-US"/>
                 <ComboBoxItem Content="es-ES"/>
                 <ComboBoxItem Content="fr-FR"/>
                 <ComboBoxItem Content="it-IT"/>
                 <ComboBoxItem Content="pt-PT"/>
+                <ComboBoxItem Content="ru-RU"/>
             </ComboBox>
 
             <Label Grid.Row="2" Grid.Column="0" Content="Formulas calculation minimum interval (requires reopen)"/>
